@@ -9,6 +9,16 @@
     <style>
 /* pantallas grandes */
 /* @media (min-width: 768px) { */
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    overflow: hidden;
+}
+
+
+
 @font-face {
         font-family: 'Myfont';
         src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
@@ -97,7 +107,7 @@
 
     }
 
-    #reglas {
+    #rules {
         font-family: Myfont, Verdana;
         display: none;
         position: fixed;
@@ -115,7 +125,7 @@
         text-align: center;
     }
 
-    #volver-reglas {
+    #close-rules {
         font-family: Myfont, Verdana;
         position: relative;
         border: 3px solid rgb(161, 161, 161);
@@ -128,11 +138,11 @@
         margin-bottom: 2%;
     }
 
-    #volver-reglas:hover {
+    #close-rules:hover {
         background-color: #7bd0b9;
     }
 
-    #abrir-reglas {
+    #open-rules {
         cursor: pointer;
         font-family: Myfont, Verdana;
         width: 10%;
@@ -151,15 +161,15 @@
 
     }
 
-    #abrir-reglas:hover {
+    #open-rules:hover {
         background-color: #38e6b7;
     }
 
-    /* #abrir-reglas:visited {
+    /* #open-rules:visited {
         background-color: #b41778;
     } */
 
-    /* #abrir-reglas:active {
+    /* #open-rules:active {
         background-color: #e638b2;
     } */
 
@@ -457,11 +467,13 @@
         /* border: solid 10px rgb(255, 247, 0); */
     }
 
+    /* arreglar botones aqui */
+
     #nuevos,
     #start,
     #finish,
-    #arrowi,
-    #downi,
+    #move-up,
+    #move-down,
     #calc,
     #ipus {
         font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
@@ -480,8 +492,8 @@
 
     #nuevos:hover,
     #finish:hover,
-    #arrowi:hover,
-    #downi:hover,
+    #move-up:hover,
+    #move-down:hover,
     #calc:hover,
     #ipus:hover {
         background-color: #e8bc79;
@@ -629,7 +641,7 @@
         src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
     }
 
-    #reglas {
+    #rules {
 
         font-family: Myfont, Verdana;
         display: none;
@@ -647,7 +659,7 @@
         color: #08360e;
     }
 
-    #volver-reglas {
+    #close-rules {
         margin-bottom: 2%;
         font-family: Myfont, Verdana;
         right: 35%;
@@ -661,11 +673,11 @@
         font-weight: bold;
     }
 
-    #volver-reglas:hover {
+    #close-rules:hover {
         background-color: #7bd0b9;
     }
 
-    #abrir-reglas {
+    #open-rules {
         cursor: pointer;
         font-family: Myfont, Verdana;
         width: 5%;
@@ -684,7 +696,7 @@
 
     }
 
-    #abrir-reglas:hover {
+    #open-rules:hover {
         background-color: #38e6b7;
     }
 
@@ -1001,11 +1013,12 @@
         /* border: solid 10px rgb(255, 247, 0); */
     }
 
+/* arreglar botones aqui */
     #nuevos,
     #start,
     #finish,
-    #arrowi,
-    #downi,
+    #move-up,
+    #move-down,
     #calc,
     #ipus {
         font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
@@ -1024,8 +1037,8 @@
 
     #nuevos:hover,
     #finish:hover,
-    #arrowi:hover,
-    #downi:hover,
+    #move-up:hover,
+    #move-down:hover,
     #calc:hover,
     #ipus:hover {
         background-color: #e8bc79;
@@ -1188,14 +1201,14 @@ h1{
 
 
 
-            <div id="abrir-reglas">מטרת<br> המשחק</div>
-            <div id="reglas">
+            <div id="open-rules">מטרת<br> המשחק</div>
+            <div id="rules">
                 מטרת המשחק: להצליח לחמוק ממכשולים ,בנסיעה בתוך הכביש בלבד <br>
                 שים לב לערכות עזרה ראשונה שמעלות את הניקוד שלך <br>
                 <br>
                 בהצלחה!
                 <br>
-                <button type="button" id="volver-reglas">סגור</button>
+                <button type="button" id="close-rules">סגור</button>
                 <br>
             </div>
 
@@ -1258,8 +1271,8 @@ h1{
         </div>
         <div id="foot">
             <div class="level-container" id="level">LEVEL: 1</div>
-            <button type="button" class="buto" id="arrowi"> העלה</button>
-            <button type="button" class="buto" id="downi"> הורד</button>
+            <button type="button" class="buto" id="move-up"> העלה</button>
+            <button type="button" class="buto" id="move-down"> הורד</button>
             <div id="score-container"></div>
         </div>
     </div>
@@ -1282,15 +1295,15 @@ const ambul = document.getElementById('ambulance');
 const scoreContainer = document.getElementById('score-container');
 const volver = document.getElementById("volvi");
 const displayGameOver = document.getElementById("game-over");
-const arrowButton = document.getElementById("arrowi");
-const downButton = document.getElementById("downi");
+const arrowButton = document.getElementById("move-up");
+const downButton = document.getElementById("move-down");
 const displayWel = document.getElementById("welcome");
 const starti = document.getElementById("emp");
 const levelContainer = document.getElementById('level');
 const displayWin = document.getElementById('win');
-const botonInfo = document.getElementById('abrir-reglas');
-const displayInfo = document.getElementById('reglas');
-const cerrarInfo = document.getElementById('volver-reglas');
+const botonInfo = document.getElementById('open-rules');
+const displayInfo = document.getElementById('rules');
+const cerrarInfo = document.getElementById('close-rules');
 
 const clasePerson = document.querySelectorAll(".person");
 
@@ -1365,11 +1378,11 @@ displayWin.addEventListener("click", () => {
   // jugar();
 });
 
-// boton abrir informacion
+// boton open informacion
 botonInfo.addEventListener("click", () => {
   console.log("boton informacion");
   if (!infoAbierto) {
-    abrirInfo();
+    openInfo();
     infoAbierto = true;
   }
   else {
@@ -1398,7 +1411,7 @@ function principio() {
   limpieza();
   jugando = false;
 }
-function abrirInfo() {
+function openInfo() {
   displayInfo.style.display = "block";
   // clearInterval(intervalo);
   limpieza();

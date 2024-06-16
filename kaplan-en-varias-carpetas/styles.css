@@ -1,651 +1,652 @@
-        :root {
-            --fondo: #13d3a3;
-            /* --fondo: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(66, 66, 66) 100%); */
-            --fondo-secundario:#13a0d3;
-            --fondo-tercero-claro:rgb(155, 212, 155);
-            --borde:rgba(0, 89, 255, 0.5);
-            --color-text: #313131;
-            --color-text-claro:rgb(145, 187, 133);
-            --color-text-botones:white;
-            --color-text-botones-obscuro:rgb(68, 68, 68);
-            --fondo-botones:rgba(0, 255, 98, 0.436);
-            --fondo-hover:rgba(0, 255, 98, 0.893);
-            --blanco: #ffffff;
-            --negro: #000000;
-        }
+:root {
+    --fondo: #13d3a3;
+    /* --fondo: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(66, 66, 66) 100%); */
+    --fondo-secundario:#1900ff;
+    --fondo-tercero-claro:rgb(155, 212, 155);
+    --borde:rgba(0, 89, 255, 0.5);
+    --color-text: #313131;
+    --color-text-claro:rgb(145, 187, 133);
+    --color-text-botones:white;
+    --color-text-botones-obscuro:rgb(68, 68, 68);
+    --fondo-botones:rgba(0, 255, 98, 0.436);
+    --fondo-hover:rgba(0, 255, 98, 0.893);
+    --blanco: #ffffff;
+    --negro: #000000;
+}
 /* pantallas grandes */
 /* @media (min-width: 768px) { */
 *{
-    margin: 0;
-    padding: 0;
+margin: 0;
+padding: 0;
 }
 body {
-    overflow: hidden;
+overflow: hidden;
 }
 
 
 
 @font-face {
-        font-family: 'Myfont';
-        src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
-    }
-
-    #game-over {
-
-        text-align: center;
-        display: none;
-        /* display: block; */
-        /* revisar2 */
-        background-color: var(--fondo);
-        /* background-color: #08360e; */
-        background-image: url("./images/TelAvivCity.jpg");
-        background-size: cover;
-        right: 0;
-        left: 0;
-        top: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        color: var(--color-text);
-        font-size: 10em;
-        font-family: Myfont, Verdana;
-        font-weight: 700;
-        z-index: 20;
-        position: fixed;
-    }
-
-    /* agregar a tablet */
-    @keyframes latido {
-        0% {
-            transform: scale(1);
-        }
-
-        50% {
-            transform: scale(.9);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
-
-
-    #milui {
-        right: 38%;
-        left: 38%;
-        top: 10%;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        font-size: 3rem;
-        animation: latido 3s linear infinite;
-    }
-
-    #perdiste {
-        animation: latido 5s linear infinite;
-        font-size: 10rem;
-        right: 0;
-        position: fixed;
-        width: 100%;
-        top: 40%;
-    }
-
-    #quema,
-    #choque {
-        display: none;
-        width: 100%;
-        position: absolute;
-        left: 10%;
-        top: -10%;
-        z-index: 10;
-    }
-
-
-    .buto {
-        border-radius: 100px;
-        width: 8%;
-        height: 8%;
-        font-family: Myfont, Verdana;
-    }
-
-    .buto:hover {
-        cursor: pointer;
-        scale: 1.1;
-    }
-
-    #rules {
-        font-family: Myfont, Verdana;
-        display: none;
-        position: fixed;
-        right: 25%;
-        left: 20%;
-        top: 30%;
-        padding: 1%, 2%;
-        /* width: 50%;
-        height: 35%; */
-        background-color: var(--blanco);
-        border: 3px dashed var(--borde);
-        z-index: 10000;
-        color: var(--color-text);
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    #close-rules {
-        font-family: Myfont, Verdana;
-        position: relative;
-        border: 3px solid var(--borde);
-        width: 30%;
-        height: 10%;
-        background-color:var(--fondo-botones);
-        cursor: pointer;
-        z-index: 100;
-        font-weight: bold;
-        margin-bottom: 2%;
-    }
-
-    #close-rules:hover {
-        background-color: var(--fondo-hover);
-        scale: 1.1;
-    }
-
-    #open-rules {
-        cursor: pointer;
-        font-family: Myfont, Verdana;
-        width: 10%;
-        height: 10%;
-        background-color: var(--fondo-botones);
-        border: solid 1px var(--borde);
-        color: var(--color-text-botones);
-        border-radius: 4px;
-        position: fixed;
-        top: 2%;
-        left: 6%;
-        font-weight: bold;
-        font-size: 2em;
-        padding: 1px;
-        text-align: center;
-    }
-
-    #open-rules:hover {
-        background-color: var(--fondo-hover);
-        scale: 1.1;
-
-    }
-
-    /* #open-rules:visited {
-        background-color: #b41778;
-    } */
-
-    /* #open-rules:active {
-        background-color: #e638b2;
-    } */
-
-
-
-    #welcome {
-        opacity: calc(1);
-        background-color: var(--fondo-secundario);
-        /* background-image: url("./images/tec.gif"); */
-        margin: 0;
-        top: 0;
-        right: 0;
-        left: 0;
-        background-repeat: no-repeat;
-        background-size: cover;
-        padding: 0;
-        display: none;
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        text-align: center;
-        font-size: 5em;
-        font-family: Myfont, Verdana;
-        font-weight: 700;
-        z-index: 20;
-        position: fixed;
-    }
-
-    /* agregar a tablet */
-    .aclaracion {
-        right: 0;
-        position: fixed;
-        width: 100%;
-        top: 80%;
-        background-color: var(--fondo-tercero-claro);
-        color: var(--color-text);
-        z-index: 20;
-
-    }
-
-    #emp {
-        font-family: Myfont, Verdana;
-        right: 35%;
-        position: fixed;
-        bottom: 30%;
-        border: 3px solid var(--borde);
-        color: var(--color-text-botones);
-        border-radius: 30px;
-        width: 30%;
-        height: 10%;
-        background-color: var(--fondo-botones);
-        z-index: 100;
-        font-weight: bold;
-    }
-
-    #emp:hover {
-        background-color: var(--fondo-hover);
-        scale: 1.1;
-
-    }
-
-    #volvi {
-        font-weight: bold;
-        border-radius: 30px;
-        right: 35%;
-        position: fixed;
-        top: 70%;
-        background-color: var(--fondo-botones);
-        border: 3px solid var(--borde);
-        color: var(--color-text-botones);
-        width: 30%;
-        height: 10%;
-        cursor: pointer;
-        z-index: 100;
-        font-family: Myfont, Verdana;
-    }
-
-
-    #volvi:hover {
-        background-color: var(--fondo-hover);
-        scale: 1.1;
-
-    }
-
-    /* agregar a tablet */
-    #volviSecond {
-        font-family: Myfont, Verdana;
-        right: 35%;
-        position: fixed;
-        background-color: var(--fondo-secundario);
-        border: 3px solid var(--borde);
-        width: 30%;
-        height: 10%;
-        cursor: pointer;
-        z-index: 100;
-        font-weight: bold;
-        /* border-radius: 30px; */
-        top: 74%;
-    }
-
-    #volviSecond:hover {
-        background-color: var(--fondo-hover);
-        scale: 1.1;
-
-    }
-
-
-    #title2 {
-        right: 20%;
-        font-size: 5rem;
-        position: fixed;
-        height: 40%;
-        width: 60%;
-        top: 30%;
-        background-color: var(--fondo);
-        color: var(--color-text);
-
-    }
-
-    #mail {
-        display: block;
-        right: 1%;
-        font-size: 1.5rem;
-        position: fixed;
-        height: 40%;
-        width: 100%;
-        top: 30%;
-    }
-
-    #mail2 {
-        display: none;
-    }
-
-    /* agregar a tablet */
-    #winText {
-        text-align: center;
-        color: var(--blanco);
-        font-size: 8rem;
-        font-weight: 700;
-        animation: latido 3s linear infinite;
-    }
-
-
-
-
-    /* agregar a tablet */
-    #win {
-        opacity: calc(1);
-        text-align: center;
-        display: none;
-        /* display: block; */
-        background-color: var(--fondo);
-        color: var(--color-text);
-        background-image: url("./images/TelAvivCity.jpg");
-        background-size: cover;
-        right: 0;
-        left: 0;
-        top: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        font-size: 10em;
-        font-family: Myfont, Verdana;
-        font-weight: 700;
-        z-index: 20;
-        position: fixed;
-
-    }
-
-    .start-over {
-        right: 35%;
-        position: fixed;
-        top: 50%;
-        border: 3px solid var(--borde);
-        width: 30%;
-        height: 10%;
-        background-color: var(--fondo-botones);
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    .start-over:hover {
-        background-color: var(--fondo-hover);
-        scale: 1.1;
-
-    }
-
-    #road {
-        /* bottom: 20%; */
-        top: 33%;
-        /* background-color: #08360e;*/
-        /*    z-index: 100; */
-        height: 38%;
-        position: fixed;
-        /* position: fixed; */
-    }
-
-    body {
-        /* display: none; */
-        margin: 0;
-        padding: 0;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        height: 100vh;
-        width: 100%;
-        background-color: var(--fondo);
-        font-size: 10px;
-        /* border: solid 10px rgb(255, 196, 0); */
-    }
-
-    #general-container {
-        /* display: none; */
-        margin: 0;
-        padding: 0;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        /* border: solid 10px rgb(255, 0, 0); */
-    }
-
-    #game-container {
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        padding: 0;
-        width: 100%;
-        height: 65%;
-        position: relative;
-        border-radius: 3px;
-        overflow: hidden;
-        background-color: var(--fondo);
-        border: solid 10px var(--borde);
-    }
-
-    .background {
-        opacity: calc(1);
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        position: fixed;
-        /* left: -100%;
-        width: 200%; */
-        width: 1000vh;
-        background-repeat: round;
-        height: 80vh;
-        background-image: url("./images/fondo.png");
-        animation: ani 1s linear infinite;
-        top: 10.5vh;
-        z-index: 0;
-    }
-
-    #bac {
-        animation: ani 30s linear infinite;
-    }
-
-    @keyframes ani {
-        0% {
-            transform: translateX(50%);
-        }
-
-        99.9999% {
-            transform: translateX(0%);
-        }
-
-        100% {
-            transform: translateX(50%);
-        }
-    }
-
-    /* revisar */
-    #foot {
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        margin: 0;
-        width: 100%;
-        height: 10%;
-        background-color:var(--fondo-secundario);
-        color: var(--color-text);
-        padding: 10px;
-        left: 0px;
-        display: inline-flex;
-        flex-wrap: wrap;
-        align-content: flex-end;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        bottom: 0;
-        /* border: solid 10px rgb(251, 255, 0); */
-    }
-
-    #header {
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        margin: 0;
-        width: 99%;
-        height: 10%;
-        background-color: var(--fondo-secundario);
-        color: var(--blanco);
-        padding: 10px;
-        left: 0px;
-        justify-content: center;
-        display: inline-flex;
-        position: fixed;
-        flex-wrap: wrap;
-        align-content: space-around;
-        align-items: center;
-        z-index: 15;
-        /* border: solid 10px rgb(255, 247, 0); */
-    }
-
-    /* revisar */
-
-    #nuevos,
-    #start,
-    #finish,
-    #move-up,
-    #move-down,
-    #calc,
-    #ipus {
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        height: 50px;
-        width: 50px;
-        font-size: 1rem;
-        background-color: var(--fondo-botones);
-        
-        padding: 5px;
-        border: solid 5px var(--borde);
-        border-radius: 50px;
-        position: relative;
-        top: 0px;
-        left: 5px;
-        color: var(--color-text-botones);
-    
-    }
-    
-
-    #nuevos:hover,
-    #finish:hover,
-    #move-up:hover,
-    #move-down:hover,
-    #calc:hover,
-    #ipus:hover {
-        background-color: var(--fondo-hover);
-        border: solid 5px var(--borde);
-        color: var(--color-text);
-        cursor: pointer;
-        scale: 1.1;
-
-    }
-
-    span {
-        color: black;
-    
-    }
-
-    #klal2 {
-        top: 50%;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        /* font-weight: 700; */
-        flex-wrap: wrap;
-        font-size: 1rem;
-        color: black;
-        z-index: 300;
-        background-color: var(--fondo);
-    }
-    h1{
-        font-size: 5rem;
-        font-weight: 700;
-    }
-
-    #title{
-
-        position: fixed;
-        display: block;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        font-weight: 700;
-        flex-wrap: wrap;
-        font-size: 5rem;
-    }
+font-family: 'Myfont';
+src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
+}
+
+#game-over {
+
+text-align: center;
+display: none;
+/* display: block; */
+/* revisar2 */
+background-color: var(--fondo);
+/* background-color: #08360e; */
+background-image: url("./images/TelAvivCity.jpg");
+background-size: cover;
+right: 0;
+left: 0;
+top: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+color: var(--color-text);
+font-size: 10em;
+font-family: Myfont, Verdana;
+font-weight: 700;
+z-index: 20;
+position: fixed;
+}
+
+/* agregar a tablet */
+@keyframes latido {
+0% {
+    transform: scale(1);
+}
+
+50% {
+    transform: scale(.9);
+}
+
+100% {
+    transform: scale(1);
+}
+}
+
+
+#milui {
+right: 38%;
+left: 38%;
+top: 10%;
+align-items: center;
+justify-content: center;
+position: fixed;
+font-size: 3rem;
+animation: latido 3s linear infinite;
+}
+
+#perdiste {
+animation: latido 5s linear infinite;
+font-size: 10rem;
+right: 0;
+position: fixed;
+width: 100%;
+top: 40%;
+}
+
+#quema,
+#choque {
+display: none;
+width: 100%;
+position: absolute;
+left: 10%;
+top: -10%;
+z-index: 10;
+}
+
+
+.buto {
+border-radius: 100px;
+width: 8%;
+height: 8%;
+font-family: Myfont, Verdana;
+}
+
+.buto:hover {
+cursor: pointer;
+scale: 1.1;
+}
+
+#rules {
+font-family: Myfont, Verdana;
+display: none;
+position: fixed;
+right: 25%;
+left: 20%;
+top: 30%;
+padding: 1%, 2%;
+/* width: 50%;
+height: 35%; */
+background-color: var(--blanco);
+border: 3px dashed var(--borde);
+z-index: 10000;
+color: var(--color-text);
+font-size: 1.5rem;
+text-align: center;
+}
+
+#close-rules {
+font-family: Myfont, Verdana;
+position: relative;
+border: 3px solid var(--borde);
+width: 30%;
+height: 10%;
+background-color:var(--fondo-botones);
+cursor: pointer;
+z-index: 100;
+font-weight: bold;
+margin-bottom: 2%;
+}
+
+#close-rules:hover {
+background-color: var(--fondo-hover);
+scale: 1.1;
+}
+
+#open-rules {
+cursor: pointer;
+font-family: Myfont, Verdana;
+width: 10%;
+height: 10%;
+background-color: var(--fondo-botones);
+border: solid 1px var(--borde);
+color: var(--color-text-botones);
+border-radius: 4px;
+position: fixed;
+top: 2%;
+left: 6%;
+font-weight: bold;
+font-size: 2em;
+padding: 1px;
+text-align: center;
+}
+
+#open-rules:hover {
+background-color: var(--fondo-hover);
+scale: 1.1;
+
+}
+
+/* #open-rules:visited {
+background-color: #b41778;
+} */
+
+/* #open-rules:active {
+background-color: #e638b2;
+} */
+
+
+
+#welcome {
+opacity: calc(1);
+background-color: var(--fondo-secundario);
+/* background-image: url("./images/tec.gif"); */
+margin: 0;
+top: 0;
+right: 0;
+left: 0;
+background-repeat: no-repeat;
+background-size: cover;
+padding: 0;
+display: none;
+position: absolute;
+width: 100vw;
+height: 100vh;
+text-align: center;
+font-size: 5em;
+font-family: Myfont, Verdana;
+font-weight: 700;
+z-index: 20;
+position: fixed;
+}
+
+/* agregar a tablet */
+.aclaracion {
+right: 0;
+position: fixed;
+width: 100%;
+top: 80%;
+background-color: var(--fondo-tercero-claro);
+color: var(--color-text);
+z-index: 20;
+
+}
+
+#emp {
+font-family: Myfont, Verdana;
+right: 35%;
+position: fixed;
+bottom: 30%;
+border: 3px solid var(--borde);
+color: var(--color-text-botones);
+border-radius: 30px;
+width: 30%;
+height: 10%;
+background-color: var(--fondo-botones);
+z-index: 100;
+font-weight: bold;
+}
+
+#emp:hover {
+background-color: var(--fondo-hover);
+scale: 1.1;
+
+}
+
+#volvi {
+font-weight: bold;
+border-radius: 30px;
+right: 35%;
+position: fixed;
+top: 70%;
+background-color: var(--fondo-botones);
+border: 3px solid var(--borde);
+color: var(--color-text-botones);
+width: 30%;
+height: 10%;
+cursor: pointer;
+z-index: 100;
+font-family: Myfont, Verdana;
+}
+
+
+#volvi:hover {
+background-color: var(--fondo-hover);
+scale: 1.1;
+
+}
+
+/* agregar a tablet */
+#volviSecond {
+font-family: Myfont, Verdana;
+right: 35%;
+position: fixed;
+background-color: var(--fondo-secundario);
+border: 3px solid var(--borde);
+width: 30%;
+height: 10%;
+cursor: pointer;
+z-index: 100;
+font-weight: bold;
+/* border-radius: 30px; */
+top: 74%;
+}
+
+#volviSecond:hover {
+background-color: var(--fondo-hover);
+scale: 1.1;
+
+}
+
+
+#title2 {
+right: 20%;
+font-size: 5rem;
+position: fixed;
+height: 40%;
+width: 60%;
+top: 30%;
+background-color: var(--fondo);
+color: var(--color-text);
+
+}
+
+#mail {
+display: block;
+right: 1%;
+font-size: 1.5rem;
+position: fixed;
+height: 40%;
+width: 100%;
+top: 30%;
+}
+
+#mail2 {
+display: none;
+}
+
+/* agregar a tablet */
+#winText {
+text-align: center;
+color: var(--blanco);
+font-size: 8rem;
+font-weight: 700;
+animation: latido 3s linear infinite;
+}
+
+
+
+
+/* agregar a tablet */
+#win {
+opacity: calc(1);
+text-align: center;
+display: none;
+/* display: block; */
+background-color: var(--fondo);
+color: var(--color-text);
+background-image: url("./images/TelAvivCity.jpg");
+background-size: cover;
+right: 0;
+left: 0;
+top: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+font-size: 10em;
+font-family: Myfont, Verdana;
+font-weight: 700;
+z-index: 20;
+position: fixed;
+
+}
+
+.start-over {
+right: 35%;
+position: fixed;
+top: 50%;
+border: 3px solid var(--borde);
+width: 30%;
+height: 10%;
+background-color: var(--fondo-botones);
+cursor: pointer;
+z-index: 100;
+}
+
+.start-over:hover {
+background-color: var(--fondo-hover);
+scale: 1.1;
+
+}
+
+#road {
+/* bottom: 20%; */
+top: 33%;
+/* background-color: #08360e;*/
+/*    z-index: 100; */
+height: 38%;
+position: fixed;
+/* position: fixed; */
+}
+
+body {
+/* display: none; */
+margin: 0;
+padding: 0;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+height: 100vh;
+width: 100%;
+background-color: var(--fondo);
+font-size: 10px;
+/* border: solid 10px rgb(255, 196, 0); */
+}
+
+#general-container {
+/* display: none; */
+margin: 0;
+padding: 0;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+width: 100%;
+height: 100%;
+position: relative;
+/* border: solid 10px rgb(255, 0, 0); */
+}
+
+#game-container {
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+padding: 0;
+width: 100%;
+height: 65%;
+position: relative;
+border-radius: 3px;
+overflow: hidden;
+background-color: var(--fondo);
+border: solid 10px var(--borde);
+}
+
+.background {
+opacity: calc(1);
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+position: fixed;
+/* left: -100%;
+width: 200%; */
+width: 1000vh;
+background-repeat: round;
+height: 80vh;
+background-image: url("./images/fondo.png");
+animation: ani 1s linear infinite;
+top: 10.5vh;
+z-index: 0;
+}
+
+#bac {
+animation: ani 30s linear infinite;
+}
+
+@keyframes ani {
+0% {
+    transform: translateX(50%);
+}
+
+99.9999% {
+    transform: translateX(0%);
+}
+
+100% {
+    transform: translateX(50%);
+}
+}
+
 /* revisar */
-    #score-container,
-    #level {
-        margin: 0px 20px;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        display: inline-flex;
-        flex-wrap: wrap;
-        position: relative;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--color-text);
-        background-color:white;
-        border: solid 5px var(--borde);
-        padding: 10px 15px;
-        border-radius: 50px;
-        align-items: baseline;
-        align-self: center;
-    }
+#foot {
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+margin: 0;
+width: 100%;
+height: 10%;
+background-color:var(--fondo-secundario);
+color: var(--color-text);
+padding: 10px;
+left: 0px;
+display: inline-flex;
+flex-wrap: wrap;
+align-content: flex-end;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+bottom: 0;
+/* border: solid 10px rgb(251, 255, 0); */
+}
 
-    /* manipulador verdadero y creador de colision */
-    #ambulance {
-        width: 10%;
-        height: 3%;
-        position: fixed;
-        left: 40%;
-        top: 61%;
-        z-index: 200;
-        /* display: none; */
-        /* background-color: #08360e; */
-        position: fixed;
-    }
+#header {
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+margin: 0;
+width: 99%;
+height: 10%;
+/* rarisimo */
+/* background-color: var(--fondo-secundario); */
+color: var(--blanco);
+padding: 10px;
+left: 0px;
+justify-content: center;
+display: inline-flex;
+position: fixed;
+flex-wrap: wrap;
+align-content: space-around;
+align-items: center;
+z-index: 15;
+/* border: solid 10px rgb(255, 247, 0); */
+}
 
-    #ambulanceImage {
-        /* display: none; */
-        width: 200%;
-        height: auto;
-        position: relative;
-        left: 0%;
-        top: -302%;
-        z-index: 10;
+/* revisar */
 
-    }
+#nuevos,
+#start,
+#finish,
+#move-up,
+#move-down,
+#calc,
+#ipus {
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+height: 50px;
+width: 50px;
+font-size: 1rem;
+background-color: var(--fondo-botones);
 
-    #fuegos {
-        width: 4%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
+padding: 5px;
+border: solid 5px var(--borde);
+border-radius: 50px;
+position: relative;
+top: 0px;
+left: 5px;
+color: var(--color-text-botones);
 
-    #personas {
-        width: 2%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
-
-    #piedras {
-        width: .5%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
-
-    #puntos {
-        width: .5%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
+}
 
 
-    .person {
-        /* display: none; */
-        /* src: '../fuego.gif'; */
-        /* src: url('../fuego.gif'); */
-        /* personi.style en general.js ,es el verdadero dador de estilo para esto */
-        width: 2%;
-        height: auto;
-        position: fixed;
-        border-radius: 50%;
-        z-index: 5;
-    }
+#nuevos:hover,
+#finish:hover,
+#move-up:hover,
+#move-down:hover,
+#calc:hover,
+#ipus:hover {
+background-color: var(--fondo-hover);
+border: solid 5px var(--borde);
+color: var(--color-text);
+cursor: pointer;
+scale: 1.1;
+
+}
+
+span {
+color: black;
+
+}
+
+#klal2 {
+top: 50%;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+/* font-weight: 700; */
+flex-wrap: wrap;
+font-size: 1rem;
+color: black;
+z-index: 300;
+background-color: var(--fondo);
+}
+h1{
+font-size: 5rem;
+font-weight: 700;
+}
+
+#title{
+
+position: fixed;
+display: block;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+font-weight: 700;
+flex-wrap: wrap;
+font-size: 5rem;
+}
+/* revisar */
+#score-container,
+#level {
+margin: 0px 20px;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+display: inline-flex;
+flex-wrap: wrap;
+position: relative;
+font-size: 1.5rem;
+font-weight: bold;
+color: var(--color-text);
+background-color:white;
+border: solid 5px var(--borde);
+padding: 10px 15px;
+border-radius: 50px;
+align-items: baseline;
+align-self: center;
+}
+
+/* manipulador verdadero y creador de colision */
+#ambulance {
+width: 10%;
+height: 3%;
+position: fixed;
+left: 40%;
+top: 61%;
+z-index: 200;
+/* display: none; */
+/* background-color: #08360e; */
+position: fixed;
+}
+
+#ambulanceImage {
+/* display: none; */
+width: 200%;
+height: auto;
+position: relative;
+left: 0%;
+top: -302%;
+z-index: 10;
+
+}
+
+#fuegos {
+width: 4%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+#personas {
+width: 2%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+#piedras {
+width: .5%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+#puntos {
+width: .5%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+
+.person {
+/* display: none; */
+/* src: '../fuego.gif'; */
+/* src: url('../fuego.gif'); */
+/* personi.style en general.js ,es el verdadero dador de estilo para esto */
+width: 2%;
+height: auto;
+position: fixed;
+border-radius: 50%;
+z-index: 5;
+}
 /* } */
 
 
@@ -660,560 +661,560 @@ body {
 /* version15 */
 /* pantallas chicas */
 @media (max-width: 767px) {
-    @font-face {
-        font-family: 'Myfont';
-        src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
-    }
-
-    #rules {
-
-        font-family: Myfont, Verdana;
-        display: none;
-        padding: 2%;
-        position: fixed;
-        right: 25%;
-        left: 20%;
-        top: 30%;
-        /* width: 50%;
-        height: auto; */
-        border: 3px dashed var(--borde);
-        z-index: 10000;
-        font-size: 1rem;
-    
-    }
-
-    #close-rules {
-        margin-bottom: 2%;
-        font-family: Myfont, Verdana;
-        right: 35%;
-        position: relative;
-        border: 1px solid var(--borde);
-        width: 30%;
-        height: 10%;
-        cursor: pointer;
-        z-index: 100;
-        font-weight: bold;
-    }
-
-    /* #close-rules:hover {
-        background-color: var(--fondo-hover);
-    } */
-
-    #open-rules {
-        cursor: pointer;
-        font-family: Myfont, Verdana;
-        width: 5%;
-        height: 5%;
-        /* background-color: var(--fondo-secundario); */
-        position: fixed;
-        top: 5%;
-        left: 3%;
-        /* color: var(--color-text); */
-        font-weight: bold;
-        font-size: 0px;
-        padding: 1px;
-        text-align: center;
-        /* border: solid 1px black; */
-        border-radius: 50px;
-
-    }
-
-    #open-rules:hover {
-        /* background-color: var(--fondo-hover); */
-    }
-
-
-    /* distinto al original */
-    #klal2 {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgb(0, 0, 0);
-        color: white;
-        font-size: 24px;
-        text-align: center;
-        padding: 20px;
-        font-family: Myfont, Verdana;
-    }
-
-    /* distinto al original */
-    #mail {
-        display: none;
-    }
-
-    /* distinto al original */
-    #mail2 {
-        display: block;
-        align-items: center;
-        font-size: 1rem;
-        position: fixed;
-        height: 40%;
-        width: 100%;
-        top: 18%;
-    }
-
-    #emp {
-        font-family: Myfont, Verdana;
-        border-radius: 30px;
-        right: 34%;
-        left: 34%;
-        position: fixed;
-        bottom: 30%;
-        width: 30%;
-        height: 10%;
-        /* border: 3px solid var(--borde); */
-        /* background-color:var(--fondo-botones); */
-        /* color: var(--color-text-botones); */
-        cursor: pointer;
-        z-index: 100;
-        font-weight: bold;
-    }
-
-    #emp:hover {
-        /* background-color:var(--fondo-hover); */
-    }
-
-    #volvi {
-        font-family: Myfont, Verdana;
-        right: 35%;
-        position: fixed;
-        bottom: 20%;
-        /* background-color: #ffffff; */
-        /* border: 3px solid var(--borde); */
-        /* color: var(--color-text-botones-obscuro); */
-        width: 30%;
-        height: 10%;
-        cursor: pointer;
-        z-index: 100;
-        font-weight: bold;
-    }
-
-    #volvi:hover {
-        /* background-color: var(--fondo-hover); */
-    }
-
-    #volviSecond {
-        font-family: Myfont, Verdana;
-        right: 35%;
-        position: fixed;
-        bottom: 20%;
-        /* border: 3px solid rgb(161, 161, 161); */
-        width: 30%;
-        height: 10%;
-        /* background-color: #c2c0bc; */
-        cursor: pointer;
-        z-index: 100;
-        font-weight: bold;
-    }
-
-    #volviSecond:hover {
-        /* background-color: #ffffff; */
-    }
-
-
-
-    .buto {
-        border-radius: 100px;
-        width: 8%;
-        height: 8%;
-        font-family: Myfont, Verdana;
-    }
-
-    .buto:hover {
-        cursor: pointer;
-        scale: 1.1;
-
-    }
-
-    #game-over {
-        background-color:var(--fondo);
-        background-image: url("./images/TelAvivCity.jpg");
-        background-size: cover;
-        right: 0;
-        left: 0;
-        top: 0;
-        padding: 0;
-        display: none;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        color:var(--blanco);
-        font-size: 10em;
-        font-family: Myfont, Verdana;
-        font-weight: 700;
-        z-index: 20;
-        position: fixed;
-    }
-
-    #welcome {
-        opacity: calc(1);
-        background-color: var(--blanco);
-        background-image: url("./images/fondo-entrada.jpg");
-        margin: 0;
-        top: 0;
-        right: 0;
-        left: 0;
-        background-repeat: no-repeat;
-        background-size: cover;
-        padding: 0;
-        display: none;
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        text-align: center;
-        /* color:var(--color-text); */
-        font-size: 5em;
-        font-family: Myfont, Verdana;
-        font-weight: 700;
-        z-index: 20;
-        position: fixed;
-    }
-
-    #aclaracion {
-        right: 0;
-        position: fixed;
-        width: 100%;
-        top: 80%;
-        background-color: var(--blanco);
-        border-radius: 10px solid rgb(46, 149, 174);
-
-    }
-
-    #title2 {
-        right: 20%;
-        font-size: 5rem;
-        position: fixed;
-        height: 40%;
-        width: 60%;
-        top: 30%;
-        /* background-color:var(--blanco); */
-
-    }
-
-
-    #win {
-        opacity: calc(1);
-        /* background-color:var(--blanco); */
-        background-image: url("./images/TelAvivCity.jpg");
-        margin: 0;
-        padding: 0;
-        display: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        /* color:var(--color-text-claro); */
-        font-size: 10em;
-        font-family: Myfont, Verdana;
-        font-weight: 700;
-        z-index: 20;
-    }
-
-
-
-    .start-over:hover {
-        background-color: var(--fondo-hover);
-        scale: 1.1;
-
-    }
-
-    #road {
-        /* bottom: 20%; */
-        top: 33%;
-        /* background-color: #08360e;*/
-        /*    z-index: 100; */
-        height: 38%;
-        position: fixed;
-        /* position: fixed; */
-    }
-
-    body {
-        /* display: none; */
-        margin: 0;
-        padding: 0;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        height: 100vh;
-        width: 100%;
-        /* background-color: var(--fondo); */
-        font-size: 10px;
-        /* border: solid 10px rgb(255, 196, 0); */
-    }
-
-    #general-container {
-        /* display: none; */
-        margin: 0;
-        padding: 0;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        width: 100vw;
-        height: 100vh;
-        position: relative;
-        /* border: solid 10px rgb(255, 0, 0); */
-    }
-
-    #game-container {
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        padding: 0;
-        width: 100%;
-        height: 65%;
-        position: relative;
-        border-radius: 3px;
-        overflow: hidden;
-        /* background-color: var(--fondo); */
-        /* border: solid 10px var(--borde); */
-    }
-
-    .background {
-        opacity: calc(1);
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        position: fixed;
-        /* left: -100%;
-        width: 200%; */
-        width: 1000vh;
-        background-repeat: round;
-        height: 80vh;
-        background-image: url("./images/fondo.png");
-        animation: ani 1s linear infinite;
-        top: 10.5vh;
-        z-index: 0;
-    }
-
-    #bac {
-        animation: ani 30s linear infinite;
-    }
-
-    @keyframes ani {
-        0% {
-            transform: translateX(50%);
-        }
-
-        99.9999% {
-            transform: translateX(0%);
-        }
-
-        100% {
-            transform: translateX(50%);
-        }
-    }
-/* revisar */
-    #foot {
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        margin: 0;
-        width: 100%;
-        height: 10%;
-        padding: 10px;
-        left: 0px;
-        display: inline-flex;
-        flex-wrap:nowrap;
-        align-content: flex-end;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        bottom: 0;
-    }
-
-    #header {
-        /* display: none; */
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        margin: 0;
-        width: 99%;
-        height: 10%;
-        /* background-color: #13d3a3; */
-        /* color: rgb(255, 255, 255); */
-        padding: 10px;
-        left: 0px;
-        justify-content: center;
-        display: inline-flex;
-        position: fixed;
-        flex-wrap:nowrap;
-        align-content: space-around;
-        align-items: center;
-        z-index: 15;
-        /* border: solid 10px rgb(255, 247, 0); */
-    }
-
-/* revisar */
-    #nuevos,
-    #start,
-    #finish,
-    #move-up,
-    #move-down,
-    #calc,
-    #ipus {
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        height: 50px;
-        width: 50px;
-        font-size: 1rem;
-        /* background-color: #edfedb; */
-        padding: 5px;
-        /* border: solid 5px #256638; */
-        border-radius: 50px;
-        position: relative;
-        top: 0px;
-        left: 5px;
-        /* color: rgb(18, 124, 2); */
-    }
-
-    #nuevos:hover,
-    #finish:hover,
-    #move-up:hover,
-    #move-down:hover,
-    #calc:hover,
-    #ipus:hover {
-        /* background-color: #e8bc79;
-        border: solid 5px #256638;
-        color: rgb(18, 124, 2); */
-        cursor: pointer;
-    }
-
-    span {
-        color: black;
-    }
-h1{
-    font-weight: 700;
-    font-size: 5rem;
+@font-face {
+font-family: 'Myfont';
+src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
 }
 
-    #title {
-        position: fixed;
-        display: block;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        font-weight: 700;
-        flex-wrap: wrap;
-        font-size: 5rem;
-    }
+#rules {
+
+font-family: Myfont, Verdana;
+display: none;
+padding: 2%;
+position: fixed;
+right: 25%;
+left: 20%;
+top: 30%;
+/* width: 50%;
+height: auto; */
+border: 3px dashed var(--borde);
+z-index: 10000;
+font-size: 1rem;
+
+}
+
+#close-rules {
+margin-bottom: 2%;
+font-family: Myfont, Verdana;
+right: 35%;
+position: relative;
+border: 1px solid var(--borde);
+width: 30%;
+height: 10%;
+cursor: pointer;
+z-index: 100;
+font-weight: bold;
+}
+
+/* #close-rules:hover {
+background-color: var(--fondo-hover);
+} */
+
+#open-rules {
+cursor: pointer;
+font-family: Myfont, Verdana;
+width: 5%;
+height: 5%;
+/* background-color: var(--fondo-secundario); */
+position: fixed;
+top: 5%;
+left: 3%;
+/* color: var(--color-text); */
+font-weight: bold;
+font-size: 0px;
+padding: 1px;
+text-align: center;
+/* border: solid 1px black; */
+border-radius: 50px;
+
+}
+
+#open-rules:hover {
+/* background-color: var(--fondo-hover); */
+}
+
+
+/* distinto al original */
+#klal2 {
+display: block;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgb(0, 0, 0);
+color: white;
+font-size: 24px;
+text-align: center;
+padding: 20px;
+font-family: Myfont, Verdana;
+}
+
+/* distinto al original */
+#mail {
+display: none;
+}
+
+/* distinto al original */
+#mail2 {
+display: block;
+align-items: center;
+font-size: 1rem;
+position: fixed;
+height: 40%;
+width: 100%;
+top: 18%;
+}
+
+#emp {
+font-family: Myfont, Verdana;
+border-radius: 30px;
+right: 34%;
+left: 34%;
+position: fixed;
+bottom: 30%;
+width: 30%;
+height: 10%;
+/* border: 3px solid var(--borde); */
+/* background-color:var(--fondo-botones); */
+/* color: var(--color-text-botones); */
+cursor: pointer;
+z-index: 100;
+font-weight: bold;
+}
+
+#emp:hover {
+/* background-color:var(--fondo-hover); */
+}
+
+#volvi {
+font-family: Myfont, Verdana;
+right: 35%;
+position: fixed;
+bottom: 20%;
+/* background-color: #ffffff; */
+/* border: 3px solid var(--borde); */
+/* color: var(--color-text-botones-obscuro); */
+width: 30%;
+height: 10%;
+cursor: pointer;
+z-index: 100;
+font-weight: bold;
+}
+
+#volvi:hover {
+/* background-color: var(--fondo-hover); */
+}
+
+#volviSecond {
+font-family: Myfont, Verdana;
+right: 35%;
+position: fixed;
+bottom: 20%;
+/* border: 3px solid rgb(161, 161, 161); */
+width: 30%;
+height: 10%;
+/* background-color: #c2c0bc; */
+cursor: pointer;
+z-index: 100;
+font-weight: bold;
+}
+
+#volviSecond:hover {
+/* background-color: #ffffff; */
+}
+
+
+
+.buto {
+border-radius: 100px;
+width: 8%;
+height: 8%;
+font-family: Myfont, Verdana;
+}
+
+.buto:hover {
+cursor: pointer;
+scale: 1.1;
+
+}
+
+#game-over {
+background-color:var(--fondo);
+background-image: url("./images/TelAvivCity.jpg");
+background-size: cover;
+right: 0;
+left: 0;
+top: 0;
+padding: 0;
+display: none;
+position: absolute;
+width: 100%;
+height: 100%;
+text-align: center;
+color:var(--blanco);
+font-size: 10em;
+font-family: Myfont, Verdana;
+font-weight: 700;
+z-index: 20;
+position: fixed;
+}
+
+#welcome {
+opacity: calc(1);
+background-color: var(--blanco);
+background-image: url("./images/fondo-entrada.jpg");
+margin: 0;
+top: 0;
+right: 0;
+left: 0;
+background-repeat: no-repeat;
+background-size: cover;
+padding: 0;
+display: none;
+position: absolute;
+width: 100vw;
+height: 100vh;
+text-align: center;
+/* color:var(--color-text); */
+font-size: 5em;
+font-family: Myfont, Verdana;
+font-weight: 700;
+z-index: 20;
+position: fixed;
+}
+
+#aclaracion {
+right: 0;
+position: fixed;
+width: 100%;
+top: 80%;
+background-color: var(--blanco);
+border-radius: 10px solid rgb(46, 149, 174);
+
+}
+
+#title2 {
+right: 20%;
+font-size: 5rem;
+position: fixed;
+height: 40%;
+width: 60%;
+top: 30%;
+/* background-color:var(--blanco); */
+
+}
+
+
+#win {
+opacity: calc(1);
+/* background-color:var(--blanco); */
+background-image: url("./images/TelAvivCity.jpg");
+margin: 0;
+padding: 0;
+display: none;
+position: fixed;
+width: 100%;
+height: 100%;
+text-align: center;
+/* color:var(--color-text-claro); */
+font-size: 10em;
+font-family: Myfont, Verdana;
+font-weight: 700;
+z-index: 20;
+}
+
+
+
+.start-over:hover {
+background-color: var(--fondo-hover);
+scale: 1.1;
+
+}
+
+#road {
+/* bottom: 20%; */
+top: 33%;
+/* background-color: #08360e;*/
+/*    z-index: 100; */
+height: 38%;
+position: fixed;
+/* position: fixed; */
+}
+
+body {
+/* display: none; */
+margin: 0;
+padding: 0;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+height: 100vh;
+width: 100%;
+/* background-color: var(--fondo); */
+font-size: 10px;
+/* border: solid 10px rgb(255, 196, 0); */
+}
+
+#general-container {
+/* display: none; */
+margin: 0;
+padding: 0;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+width: 100vw;
+height: 100vh;
+position: relative;
+/* border: solid 10px rgb(255, 0, 0); */
+}
+
+#game-container {
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+padding: 0;
+width: 100%;
+height: 65%;
+position: relative;
+border-radius: 3px;
+overflow: hidden;
+/* background-color: var(--fondo); */
+/* border: solid 10px var(--borde); */
+}
+
+.background {
+opacity: calc(1);
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+position: fixed;
+/* left: -100%;
+width: 200%; */
+width: 1000vh;
+background-repeat: round;
+height: 80vh;
+background-image: url("./images/fondo.png");
+animation: ani 1s linear infinite;
+top: 10.5vh;
+z-index: 0;
+}
+
+#bac {
+animation: ani 30s linear infinite;
+}
+
+@keyframes ani {
+0% {
+    transform: translateX(50%);
+}
+
+99.9999% {
+    transform: translateX(0%);
+}
+
+100% {
+    transform: translateX(50%);
+}
+}
 /* revisar */
-    #score-container,
-    #level {
-        margin: 0px 20px;
-        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
-        display: inline-flex;
-        flex-wrap: wrap;
-        position: relative;
-        font-size: 1.5rem;
-        font-weight: bold;
-        /* color:var(--color-text);
-        background-color: white; */
-        /* border: solid 5px var(--borde); */
-        padding: 10px 15px;
-        border-radius: 50px;
-        align-items: baseline;
-        align-self: center;
-    }
+#foot {
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+margin: 0;
+width: 100%;
+height: 10%;
+padding: 10px;
+left: 0px;
+display: inline-flex;
+flex-wrap:nowrap;
+align-content: flex-end;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+bottom: 0;
+}
 
-    /* manipulador verdadero y creador de colision */
-    #ambulance {
-        display: none;
-        width: 10%;
-        height: 3%;
-        position: fixed;
-        left: 40%;
-        top: 61%;
-        z-index: 200;
-        /* display: none; */
-        /* background-color: #08360e; */
-        position: fixed;
-    }
+#header {
+/* display: none; */
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+margin: 0;
+width: 99%;
+height: 10%;
+/* background-color: #13d3a3; */
+/* color: rgb(255, 255, 255); */
+padding: 10px;
+left: 0px;
+justify-content: center;
+display: inline-flex;
+position: fixed;
+flex-wrap:nowrap;
+align-content: space-around;
+align-items: center;
+z-index: 15;
+/* border: solid 10px rgb(255, 247, 0); */
+}
 
-    #ambulanceImage {
-        /* display: none; */
-        width: 200%;
-        height: auto;
-        position: relative;
-        left: 0%;
-        top: -302%;
-        z-index: 10;
+/* revisar */
+#nuevos,
+#start,
+#finish,
+#move-up,
+#move-down,
+#calc,
+#ipus {
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+height: 50px;
+width: 50px;
+font-size: 1rem;
+/* background-color: #edfedb; */
+padding: 5px;
+/* border: solid 5px #256638; */
+border-radius: 50px;
+position: relative;
+top: 0px;
+left: 5px;
+/* color: rgb(18, 124, 2); */
+}
 
-    }
+#nuevos:hover,
+#finish:hover,
+#move-up:hover,
+#move-down:hover,
+#calc:hover,
+#ipus:hover {
+/* background-color: #e8bc79;
+border: solid 5px #256638;
+color: rgb(18, 124, 2); */
+cursor: pointer;
+}
 
-    #fuegos {
-        width: 4%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
+span {
+color: black;
+}
+h1{
+font-weight: 700;
+font-size: 5rem;
+}
 
-    #personas {
-        width: 2%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
+#title {
+position: fixed;
+display: block;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+font-weight: 700;
+flex-wrap: wrap;
+font-size: 5rem;
+}
+/* revisar */
+#score-container,
+#level {
+margin: 0px 20px;
+font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+display: inline-flex;
+flex-wrap: wrap;
+position: relative;
+font-size: 1.5rem;
+font-weight: bold;
+/* color:var(--color-text);
+background-color: white; */
+/* border: solid 5px var(--borde); */
+padding: 10px 15px;
+border-radius: 50px;
+align-items: baseline;
+align-self: center;
+}
 
-    #piedras {
-        width: .5%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
+/* manipulador verdadero y creador de colision */
+#ambulance {
+display: none;
+width: 10%;
+height: 3%;
+position: fixed;
+left: 40%;
+top: 61%;
+z-index: 200;
+/* display: none; */
+/* background-color: #08360e; */
+position: fixed;
+}
 
-    #puntos {
-        width: .5%;
-        height: auto;
-        position: fixed;
-        z-index: 5;
-        right: 0px;
-        top: 50%;
-    }
+#ambulanceImage {
+/* display: none; */
+width: 200%;
+height: auto;
+position: relative;
+left: 0%;
+top: -302%;
+z-index: 10;
 
-    #perdiste {
-  font-size: 5rem;
-    }
-    /* el "perdiste" para pantallas grandes */
-    /* #perdiste {
-        animation: latido 5s linear infinite;
-        font-size: 10rem;
-        right: 0;
-        position: fixed;
-        width: 100%;
-        top: 40%;
-    } */
+}
 
-    .person {
-        /* display: none; */
-        /* src: '../fuego.gif'; */
-        /* src: url('../fuego.gif'); */
-        width: 2%;
-        height: auto;
-        position: fixed;
-        border-radius: 50%;
-        z-index: 5;
-    }
+#fuegos {
+width: 4%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+#personas {
+width: 2%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+#piedras {
+width: .5%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+#puntos {
+width: .5%;
+height: auto;
+position: fixed;
+z-index: 5;
+right: 0px;
+top: 50%;
+}
+
+#perdiste {
+font-size: 5rem;
+}
+/* el "perdiste" para pantallas grandes */
+/* #perdiste {
+animation: latido 5s linear infinite;
+font-size: 10rem;
+right: 0;
+position: fixed;
+width: 100%;
+top: 40%;
+} */
+
+.person {
+/* display: none; */
+/* src: '../fuego.gif'; */
+/* src: url('../fuego.gif'); */
+width: 2%;
+height: auto;
+position: fixed;
+border-radius: 50%;
+z-index: 5;
+}
 /* revisar */
 @keyframes latido {
-        0% {
-            transform: scale(1);
-        }
+0% {
+    transform: scale(1);
+}
 
-        50% {
-            transform: scale(.9);
-        }
+50% {
+    transform: scale(.9);
+}
 
-        100% {
-            transform: scale(1);
-        }
-    }
-    /* revisar */
-    #milui {
-        right: 38%;
-        left: 38%;
-        top: 10%;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        font-size: 2rem;
-        animation: latido 3s linear infinite;
-    }
+100% {
+    transform: scale(1);
+}
+}
+/* revisar */
+#milui {
+right: 38%;
+left: 38%;
+top: 10%;
+align-items: center;
+justify-content: center;
+position: fixed;
+font-size: 2rem;
+animation: latido 3s linear infinite;
+}
 }

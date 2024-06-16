@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לעבור את קפלן!</title>
+    <link rel="icon" href="./images/ambu.ico" type="image/gif">
+    <style>
+/* pantallas grandes */
+/* @media (min-width: 768px) { */
+@font-face {
+        font-family: 'Myfont';
+        src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
+    }
+
+    #game-over {
+
+        text-align: center;
+        display: none;
+        /* display: block; */
+        background-color: #08360e;
+        background-image: url("./images/TelAvivCity.jpg");
+        background-size: cover;
+        right: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        color: hsl(0, 0%, 100%);
+        font-size: 10em;
+        font-family: Myfont, Verdana;
+        font-weight: 700;
+        z-index: 20;
+        position: fixed;
+    }
+
+    /* agregar a tablet */
+    @keyframes latido {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(.8);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+
+    #milui {
+        right: 38%;
+        left: 38%;
+        top: 10%;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        font-size: 5rem;
+        animation: latido 3s linear infinite;
+    }
+
+    #perdiste {
+        animation: latido 5s linear infinite;
+        font-size: 10rem;
+        right: 0;
+        position: fixed;
+        width: 100%;
+        top: 40%;
+    }
+
+    #quema,
+    #choque {
+        display: none;
+        width: 100%;
+        position: absolute;
+        left: 10%;
+        top: -10%;
+        z-index: 10;
+    }
+
+
+    .buto {
+        border-radius: 100px;
+        width: 8%;
+        height: 8%;
+        font-family: Myfont, Verdana;
+
+    }
+
+    .buto:hover {
+        background-color: #ffffff;
+        cursor: pointer;
+
+    }
+
+    #reglas {
+        font-family: Myfont, Verdana;
+        display: none;
+        position: fixed;
+        right: 25%;
+        left: 20%;
+        top: 30%;
+        padding: 1%, 2%;
+        /* width: 50%;
+        height: 35%; */
+        background-color: #edfedb;
+        border: 3px dashed rgb(156, 156, 156);
+        z-index: 10000;
+        color: #08360e;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    #volver-reglas {
+        font-family: Myfont, Verdana;
+        position: relative;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #d0fef2;
+        cursor: pointer;
+        z-index: 100;
+        font-weight: bold;
+        margin-bottom: 2%;
+    }
+
+    #volver-reglas:hover {
+        background-color: #7bd0b9;
+    }
+
+    #abrir-reglas {
+        cursor: pointer;
+        font-family: Myfont, Verdana;
+        width: 10%;
+        height: 10%;
+        background-color: #d0fef2;
+        position: fixed;
+        top: 2%;
+        left: 6%;
+        color: #08360e;
+        font-weight: bold;
+        font-size: 2em;
+        padding: 1px;
+        text-align: center;
+        border: solid 1px black;
+        border-radius: 4px;
+
+    }
+
+    #abrir-reglas:hover {
+        background-color: #38e6b7;
+    }
+
+    /* #abrir-reglas:visited {
+        background-color: #b41778;
+    } */
+
+    /* #abrir-reglas:active {
+        background-color: #e638b2;
+    } */
+
+
+
+    #welcome {
+        opacity: calc(1);
+        background-color: #9cc9bb;
+        /* background-image: url("./images/tec.gif"); */
+        margin: 0;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 0;
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        color: #7e928b;
+        font-size: 5em;
+        font-family: Myfont, Verdana;
+        font-weight: 700;
+        z-index: 20;
+        position: fixed;
+    }
+
+    /* agregar a tablet */
+    .avara {
+        right: 0;
+        position: fixed;
+        width: 100%;
+        top: 80%;
+        background-color: #ffffff;
+        z-index: 20;
+
+    }
+
+    #emp {
+        font-family: Myfont, Verdana;
+        right: 35%;
+        position: fixed;
+        bottom: 30%;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #d0fef2;
+        cursor: pointer;
+        z-index: 100;
+        font-weight: bold;
+    }
+
+    #emp:hover {
+        background-color: #7bd0b9;
+    }
+
+    #volvi {
+        font-weight: bold;
+        right: 35%;
+        position: fixed;
+        top: 70%;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #c2c0bc;
+        cursor: pointer;
+        z-index: 100;
+        font-family: Myfont, Verdana;
+    }
+
+
+    #volvi:hover {
+        background-color: #ffffff;
+    }
+
+    /* agregar a tablet */
+    #volviSecond {
+        font-family: Myfont, Verdana;
+        right: 35%;
+        position: fixed;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #c2c0bc;
+        cursor: pointer;
+        z-index: 100;
+        font-weight: bold;
+        /* border-radius: 30px; */
+        top: 74%;
+    }
+
+    #volviSecond:hover {
+        background-color: #ffffff;
+    }
+
+
+    #title2 {
+        right: 20%;
+        font-size: 5rem;
+        position: fixed;
+        height: 40%;
+        width: 60%;
+        top: 30%;
+        background-color: #ffffff;
+
+    }
+
+    #mail {
+        display: block;
+        right: 1%;
+        font-size: 1.5rem;
+        position: fixed;
+        height: 40%;
+        width: 100%;
+        top: 30%;
+
+    }
+
+    #mail2 {
+        display: none;
+
+    }
+
+    /* agregar a tablet */
+    #winText {
+        text-align: center;
+        color: white;
+        font-size: 8rem;
+        font-weight: 700;
+        animation: latido 3s linear infinite;
+    }
+
+
+
+
+    /* agregar a tablet */
+    #win {
+        opacity: calc(1);
+        text-align: center;
+        display: none;
+        /* display: block; */
+        background-color: #08360e;
+        background-image: url("./images/TelAvivCity.jpg");
+        background-size: cover;
+        right: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        color: hsl(0, 0%, 100%);
+        font-size: 10em;
+        font-family: Myfont, Verdana;
+        font-weight: 700;
+        z-index: 20;
+        position: fixed;
+
+    }
+
+    .start-over {
+        right: 35%;
+        position: fixed;
+        top: 50%;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #13d3a3;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .start-over:hover {
+        background-color: #c5ece2;
+    }
+
+    #road {
+        /* bottom: 20%; */
+        top: 33%;
+        /* background-color: #08360e;*/
+        /*    z-index: 100; */
+        height: 38%;
+        position: fixed;
+        /* position: fixed; */
+    }
+
+    body {
+        /* display: none; */
+        margin: 0;
+        padding: 0;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        height: 100vh;
+        width: 100%;
+        background-color: #9cc9bb;
+        font-size: 10px;
+        /* border: solid 10px rgb(255, 196, 0); */
+    }
+
+    #general-container {
+        /* display: none; */
+        margin: 0;
+        padding: 0;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        /* border: solid 10px rgb(255, 0, 0); */
+    }
+
+    #game-container {
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        padding: 0;
+        width: 100%;
+        height: 65%;
+        position: relative;
+        border-radius: 3px;
+        overflow: hidden;
+        background-color: #08360e;
+        border: solid 10px rgb(175, 175, 175);
+    }
+
+    .background {
+        opacity: calc(1);
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        position: fixed;
+        /* left: -100%;
+        width: 200%; */
+        width: 1000vh;
+        background-repeat: round;
+        height: 80vh;
+        background-image: url("./images/fondo.png");
+        animation: ani 1s linear infinite;
+        top: 10.5vh;
+        z-index: 0;
+    }
+
+    #bac {
+        animation: ani 30s linear infinite;
+    }
+
+    @keyframes ani {
+        0% {
+            transform: translateX(50%);
+        }
+
+        99.9999% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(50%);
+        }
+    }
+
+    #foot {
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0;
+        width: 100%;
+        height: 10%;
+        background-color: #13d3a3;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        left: 0px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        /* border: solid 10px rgb(251, 255, 0); */
+    }
+
+    #header {
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0;
+        width: 99%;
+        height: 10%;
+        background-color: #13d3a3;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        left: 0px;
+        justify-content: center;
+        display: inline-flex;
+        position: fixed;
+        flex-wrap: wrap;
+        align-content: space-around;
+        align-items: center;
+        z-index: 15;
+        /* border: solid 10px rgb(255, 247, 0); */
+    }
+
+    #nuevos,
+    #start,
+    #finish,
+    #arrowi,
+    #downi,
+    #calc,
+    #ipus {
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        height: 50px;
+        width: 50px;
+        font-size: 1rem;
+        background-color: #edfedb;
+        padding: 5px;
+        border: solid 5px #256638;
+        border-radius: 50px;
+        position: relative;
+        top: 10px;
+        left: 5px;
+        color: rgb(18, 124, 2);
+    }
+
+    #nuevos:hover,
+    #finish:hover,
+    #arrowi:hover,
+    #downi:hover,
+    #calc:hover,
+    #ipus:hover {
+        background-color: #e8bc79;
+        border: solid 5px #256638;
+        color: rgb(18, 124, 2);
+        cursor: pointer;
+    }
+
+    span {
+        color: black;
+    }
+
+    #klal2 {
+        top: 50%;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        /* font-weight: 700; */
+        flex-wrap: wrap;
+        font-size: 1rem;
+        color: #08360e;
+        z-index: 300;
+        background-color: #ffffff;
+    }
+    h1{
+        font-size: 5rem;
+        font-weight: 700;
+    }
+
+    #title{
+
+        position: fixed;
+        display: block;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 700;
+        flex-wrap: wrap;
+        font-size: 5rem;
+    }
+
+    #score-container,
+    #level {
+        margin: 5%;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        display: inline-flex;
+        flex-wrap: wrap;
+        position: relative;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: rgb(18, 124, 2);
+        background-color: white;
+        padding: 10px 15px;
+        border: solid 5px #256638;
+        border-radius: 50px;
+        background-color: #edfedb;
+        align-items: baseline;
+        align-self: center;
+    }
+
+    /* manipulador verdadero y creador de colision */
+    #ambulance {
+        width: 10%;
+        height: 3%;
+        position: fixed;
+        left: 40%;
+        top: 61%;
+        z-index: 200;
+        /* display: none; */
+        /* background-color: #08360e; */
+        position: fixed;
+    }
+
+    #ambulanceImage {
+        /* display: none; */
+        width: 200%;
+        height: auto;
+        position: relative;
+        left: 0%;
+        top: -302%;
+        z-index: 10;
+
+    }
+
+    #fuegos {
+        width: 4%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+    #personas {
+        width: 2%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+    #piedras {
+        width: .5%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+    #puntos {
+        width: .5%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+
+    .person {
+        /* display: none; */
+        /* src: '../fuego.gif'; */
+        /* src: url('../fuego.gif'); */
+        /* personi.style en general.js ,es el verdadero dador de estilo para esto */
+        width: 2%;
+        height: auto;
+        position: fixed;
+        border-radius: 50%;
+        z-index: 5;
+    }
+/* } */
+
+
+
+
+
+
+
+
+
+
+/* version15 */
+/* pantallas chicas */
+@media (max-width: 767px) {
+    @font-face {
+        font-family: 'Myfont';
+        src: url('./fonts/Handjet-VariableFont_ELGR\,ELSH\,wght.ttf');
+    }
+
+    #reglas {
+
+        font-family: Myfont, Verdana;
+        display: none;
+        padding: 2%;
+        position: fixed;
+        right: 25%;
+        left: 20%;
+        top: 30%;
+        /* width: 50%;
+        height: auto; */
+        background-color: #edfedb;
+        border: 3px dashed rgb(156, 156, 156);
+        z-index: 10000;
+        font-size: 1rem;
+        color: #08360e;
+    }
+
+    #volver-reglas {
+        margin-bottom: 2%;
+        font-family: Myfont, Verdana;
+        right: 35%;
+        position: relative;
+        border: 1px solid rgb(156, 156, 156);
+        width: 30%;
+        height: 10%;
+        background-color: #d0fef2;
+        cursor: pointer;
+        z-index: 100;
+        font-weight: bold;
+    }
+
+    #volver-reglas:hover {
+        background-color: #7bd0b9;
+    }
+
+    #abrir-reglas {
+        cursor: pointer;
+        font-family: Myfont, Verdana;
+        width: 5%;
+        height: 5%;
+        background-color: #d0fef2;
+        position: fixed;
+        top: 5%;
+        left: 3%;
+        color: #08360e;
+        font-weight: bold;
+        font-size: 0px;
+        padding: 1px;
+        text-align: center;
+        border: solid 1px black;
+        border-radius: 50px;
+
+    }
+
+    #abrir-reglas:hover {
+        background-color: #38e6b7;
+    }
+
+
+    /* distinto al original */
+    #klal2 {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        padding: 20px;
+        font-family: Myfont, Verdana;
+    }
+
+    /* distinto al original */
+    #mail {
+        display: none;
+    }
+
+    /* distinto al original */
+    #mail2 {
+        display: block;
+        align-items: center;
+        font-size: 1rem;
+        position: fixed;
+        height: 40%;
+        width: 100%;
+        top: 18%;
+    }
+
+    #emp {
+        font-family: Myfont, Verdana;
+        right: 34%;
+        left: 34%;
+        position: fixed;
+        bottom: 30%;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #d0fef2;
+        cursor: pointer;
+        z-index: 100;
+        font-weight: bold;
+    }
+
+    #emp:hover {
+        background-color: #7bd0b9;
+    }
+
+    #volvi {
+        font-family: Myfont, Verdana;
+        right: 35%;
+        position: fixed;
+        bottom: 20%;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #c2c0bc;
+        cursor: pointer;
+        z-index: 100;
+        font-weight: bold;
+    }
+
+    #volvi:hover {
+        background-color: #ffffff;
+    }
+
+    #volviSecond {
+        font-family: Myfont, Verdana;
+        right: 35%;
+        position: fixed;
+        bottom: 20%;
+        border: 3px solid rgb(161, 161, 161);
+        width: 30%;
+        height: 10%;
+        background-color: #c2c0bc;
+        cursor: pointer;
+        z-index: 100;
+        font-weight: bold;
+    }
+
+    #volviSecond:hover {
+        background-color: #ffffff;
+    }
+
+
+
+    .buto {
+        border-radius: 100px;
+        width: 8%;
+        height: 8%;
+        font-family: Myfont, Verdana;
+    }
+
+    .buto:hover {
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+
+    #game-over {
+        background-color: #08360e;
+        background-image: url("./images/TelAvivCity.jpg");
+        background-size: cover;
+        right: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: #ffffff;
+        font-size: 10em;
+        font-family: Myfont, Verdana;
+        font-weight: 700;
+        z-index: 20;
+        position: fixed;
+    }
+
+    #welcome {
+        opacity: calc(1);
+        background-color: #9cc9bb;
+        /* background-image: url("./images/tec.gif"); */
+        margin: 0;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 0;
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        color: #7e928b;
+        font-size: 5em;
+        font-family: Myfont, Verdana;
+        font-weight: 700;
+        z-index: 20;
+        position: fixed;
+    }
+
+    #avara {
+        right: 0;
+        position: fixed;
+        width: 100%;
+        top: 80%;
+        background-color: #ffffff;
+        border-radius: 10px solid rgb(46, 149, 174);
+
+    }
+
+    #title2 {
+        right: 20%;
+        font-size: 5rem;
+        position: fixed;
+        height: 40%;
+        width: 60%;
+        top: 30%;
+        background-color: #ffffff;
+
+    }
+
+
+    #win {
+        opacity: calc(1);
+        background-color: #08360e;
+        background-image: url("./images/TelAvivCity.jpg");
+        margin: 0;
+        padding: 0;
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: #ffffff;
+        font-size: 10em;
+        font-family: Myfont, Verdana;
+        font-weight: 700;
+        z-index: 20;
+    }
+
+
+
+    .start-over:hover {
+        background-color: #c5ece2;
+    }
+
+    #road {
+        /* bottom: 20%; */
+        top: 33%;
+        /* background-color: #08360e;*/
+        /*    z-index: 100; */
+        height: 38%;
+        position: fixed;
+        /* position: fixed; */
+    }
+
+    body {
+        /* display: none; */
+        margin: 0;
+        padding: 0;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        height: 100vh;
+        width: 100%;
+        background-color: #9cc9bb;
+        font-size: 10px;
+        /* border: solid 10px rgb(255, 196, 0); */
+    }
+
+    #general-container {
+        /* display: none; */
+        margin: 0;
+        padding: 0;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        /* border: solid 10px rgb(255, 0, 0); */
+    }
+
+    #game-container {
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        padding: 0;
+        width: 100%;
+        height: 65%;
+        position: relative;
+        border-radius: 3px;
+        overflow: hidden;
+        background-color: #08360e;
+        border: solid 10px rgb(175, 175, 175);
+    }
+
+    .background {
+        opacity: calc(1);
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        position: fixed;
+        /* left: -100%;
+        width: 200%; */
+        width: 1000vh;
+        background-repeat: round;
+        height: 80vh;
+        background-image: url("./images/fondo.png");
+        animation: ani 1s linear infinite;
+        top: 10.5vh;
+        z-index: 0;
+    }
+
+    #bac {
+        animation: ani 30s linear infinite;
+    }
+
+    @keyframes ani {
+        0% {
+            transform: translateX(50%);
+        }
+
+        99.9999% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(50%);
+        }
+    }
+
+    #foot {
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0;
+        width: 100%;
+        height: 10%;
+        background-color: #13d3a3;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        left: 0px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        /* border: solid 10px rgb(251, 255, 0); */
+    }
+
+    #header {
+        /* display: none; */
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0;
+        width: 99%;
+        height: 10%;
+        background-color: #13d3a3;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        left: 0px;
+        justify-content: center;
+        display: inline-flex;
+        position: fixed;
+        flex-wrap: wrap;
+        align-content: space-around;
+        align-items: center;
+        z-index: 15;
+        /* border: solid 10px rgb(255, 247, 0); */
+    }
+
+    #nuevos,
+    #start,
+    #finish,
+    #arrowi,
+    #downi,
+    #calc,
+    #ipus {
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        height: 50px;
+        width: 50px;
+        font-size: 1rem;
+        background-color: #edfedb;
+        padding: 5px;
+        border: solid 5px #256638;
+        border-radius: 50px;
+        position: relative;
+        top: 10px;
+        left: 5px;
+        color: rgb(18, 124, 2);
+    }
+
+    #nuevos:hover,
+    #finish:hover,
+    #arrowi:hover,
+    #downi:hover,
+    #calc:hover,
+    #ipus:hover {
+        background-color: #e8bc79;
+        border: solid 5px #256638;
+        color: rgb(18, 124, 2);
+        cursor: pointer;
+    }
+
+    span {
+        color: black;
+    }
+h1{
+    font-weight: 700;
+    font-size: 5rem;
+}
+
+    #title {
+
+        position: fixed;
+        display: block;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 700;
+        flex-wrap: wrap;
+        font-size: 5rem;
+    }
+
+    #score-container,
+    #level {
+        margin: 5%;
+        font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
+        display: inline-flex;
+        flex-wrap: wrap;
+        position: relative;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: rgb(18, 124, 2);
+        background-color: white;
+        padding: 10px 15px;
+        border: solid 5px #256638;
+        border-radius: 50px;
+        background-color: #edfedb;
+        align-items: baseline;
+        align-self: center;
+    }
+
+    /* manipulador verdadero y creador de colision */
+    #ambulance {
+        display: none;
+        width: 10%;
+        height: 3%;
+        position: fixed;
+        left: 40%;
+        top: 61%;
+        z-index: 200;
+        /* display: none; */
+        /* background-color: #08360e; */
+        position: fixed;
+    }
+
+    #ambulanceImage {
+        /* display: none; */
+        width: 200%;
+        height: auto;
+        position: relative;
+        left: 0%;
+        top: -302%;
+        z-index: 10;
+
+    }
+
+    #fuegos {
+        width: 4%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+    #personas {
+        width: 2%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+    #piedras {
+        width: .5%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+    #puntos {
+        width: .5%;
+        height: auto;
+        position: fixed;
+        z-index: 5;
+        right: 0px;
+        top: 50%;
+    }
+
+    #perdiste {
+        right: 0;
+        position: fixed;
+        width: 100%;
+        top: 40%;
+    }
+
+    .person {
+        /* display: none; */
+        /* src: '../fuego.gif'; */
+        /* src: url('../fuego.gif'); */
+        width: 2%;
+        height: auto;
+        position: fixed;
+        border-radius: 50%;
+        z-index: 5;
+    }
+
+
+
+
+
+    </style>
+</head>
+
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43E2TEDLB3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-43E2TEDLB3');
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+<body>
+    <div id="general-container">
+        <div id="header">
+
+
+
+            <div id="abrir-reglas">מטרת<br> המשחק</div>
+            <div id="reglas">
+                מטרת המשחק: להצליח לחמוק ממכשולים ,בנסיעה בתוך הכביש בלבד <br>
+                שים לב לערכות עזרה ראשונה שמעלות את הניקוד שלך <br>
+                <br>
+                בהצלחה!
+                <br>
+                <button type="button" id="volver-reglas">סגור</button>
+                <br>
+            </div>
+
+
+            <div id="title">
+                לעבור את קפלן
+            </div>
+        </div>
+        <div id="game-container">
+            <div id="welcome">
+                <div id="title2">לעבור את קפלן
+                </div>
+                <button type="button" class="start-over" id="emp"> התחל משחק</button>
+                <div class="avara">הבהרה: משחק זה אינו מעודד אלימות או נהיגה לא זהירה!!
+                    <div id="klal2">
+                        <div id="mail2">
+              
+                           "לעבור את קפלן" <br>
+                            אנחנו עדיין עובדים על האתר, לעת עתה מומלץ להשתמש במשחק זה דרך המחשב! <br>
+                            <br>
+                            מייל ליצירת קשר:
+                            <br>
+                            mymadim@gmail.com
+                        </div>
+                    </div>
+                </div>
+                <div id="mail">mymadim@gmail.com</div>
+            </div>
+
+
+
+            <div id="game-over">
+                <div id="perdiste">GAME OVER</div>
+                <div id="milui">קפלן חסומה!</div>
+                <button type="button" class="start-over" id="volvi">התחל שוב</button>
+            </div>
+
+
+
+            <div id="win">
+
+                <div id="winText">עברת את קפלן בהצלחה!</div>
+                <div class="avara">
+                    <button type="button" class="start-over" id="volviSecond">התחל שוב</button>
+                </div>
+            </div>
+
+
+
+
+
+            <div id="bac" class="background"></div>
+            <div id="road">
+            </div>
+            <div id="ambulance">
+                <img id="ambulanceImage" src="./images/asaca humo y sirena clasico.gif" alt="Ambulancia" />
+                <!-- <img id="quema" src="./images/bolaFuego.gif" alt="bolaFuego" />
+                <img id="choque" src="./images/choqueEfecto.gif" alt="choque" /> -->
+            </div>
+        </div>
+        <div id="foot">
+            <div class="level-container" id="level">LEVEL: 1</div>
+            <button type="button" class="buto" id="arrowi"> העלה</button>
+            <button type="button" class="buto" id="downi"> הורד</button>
+            <div id="score-container"></div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script>
+    </script>
+    <script>
+        
+//version13
+//arreglo de fotos y id
+const ides = ['fuegos', 'piedras', 'fuegos', 'piedras', 'fuegos', 'piedras', 'personas', 'puntos'];
+const imagenes = ["./images/fuego.gif", "./images/piedra.gif", "./images/fuego.gif", "./images/piedra.gif", "./images/fuego.gif", "./images/piedra.gif", "./images/pron.gif", "./images/puntos.gif"];
+let imagenActualIndex = 0;
+
+const milui = document.getElementById('milui');
+const perdiste = document.getElementById('perdiste');
+const ambuli = document.getElementById('ambulanceImage');
+const ambul = document.getElementById('ambulance');
+const scoreContainer = document.getElementById('score-container');
+const volver = document.getElementById("volvi");
+const displayGameOver = document.getElementById("game-over");
+const arrowButton = document.getElementById("arrowi");
+const downButton = document.getElementById("downi");
+const displayWel = document.getElementById("welcome");
+const starti = document.getElementById("emp");
+const levelContainer = document.getElementById('level');
+const displayWin = document.getElementById('win');
+const botonInfo = document.getElementById('abrir-reglas');
+const displayInfo = document.getElementById('reglas');
+const cerrarInfo = document.getElementById('volver-reglas');
+
+const clasePerson = document.querySelectorAll(".person");
+
+
+// Variables iniciales
+let tiempoNivel = 1500;
+// let intervalo;
+let level = 1;
+let score = 1000;
+let score2 = 0;//revisar
+let maximo = 72;
+let minimo = 48;
+let medio = 61;
+let currentTop = medio;
+let jugando = false;
+let infoAbierto = false;
+
+//variantes de animacion
+let speed = 1;//cantidad de pixeles que se mueve por cada llamada
+let leveli = 10;
+let llamadas = 0;//cada...milisegundos se llama a hacer un movimiento "speed"
+
+
+
+//funciones principales
+principio();
+setInterval(createPerson, 1000);
+
+
+
+//botones
+//boton para empezar juego
+starti.addEventListener("click", () => {
+  console.log("boton de principio");
+  jugar();
+});
+
+//funcion teclado subir,bajar
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowUp') {
+    console.log("boton teclado arriba");
+    bajar();
+  }
+  if (event.key === 'ArrowDown') {
+    console.log("boton teclado abajo");
+    subir();
+  }
+});
+//funciones de botones y teclado
+//funcion boton pantalla
+// boton pantalla subir
+arrowButton.addEventListener("click", () => {
+  console.log("boton pantalla arriba");
+  bajar();
+});
+// boton pantalla bajar
+downButton.addEventListener("click", () => {
+  console.log("boton pantalla abajo");
+  subir();
+});
+//boton salir de game over
+volver.addEventListener("click", () => {
+  console.log("boton salir de game over");
+  location.reload();
+  // jugar();
+});
+
+//boton salir de win
+displayWin.addEventListener("click", () => {
+  console.log("boton salir de ganador");
+  location.reload();
+  // jugar();
+});
+
+// boton abrir informacion
+botonInfo.addEventListener("click", () => {
+  console.log("boton informacion");
+  if (!infoAbierto) {
+    abrirInfo();
+    infoAbierto = true;
+  }
+  else {
+    jugar();
+    infoAbierto = false;
+  }
+});
+
+
+// boton cerrar informacion
+cerrarInfo.addEventListener("click", () => {
+  console.log("boton salir de informacion");
+  // location.reload();
+  jugar();
+});
+
+
+
+
+
+
+//pantallas///////////////////////////////////////////////
+//primer pantalla antes de jugar
+function principio() {
+  displayWel.style.display = "block";
+  limpieza();
+  jugando = false;
+}
+function abrirInfo() {
+  displayInfo.style.display = "block";
+  // clearInterval(intervalo);
+  limpieza();
+  displayGameOver.style.display = "none";
+  jugando = false;
+}
+//funcion game-over
+function perdido() {
+  // clearInterval(intervalo);
+  displayGameOver.style.display = "block";
+  limpieza();
+  score = 0;
+  updateScore(score);
+  level = 1;
+  updateLevel;
+  jugando = false;
+  animacionPerdiste();
+}
+
+
+//ganaste
+function winer() {
+  if (displayGameOver.style.display === "none" &
+    displayWel.style.display === "none" &
+    displayInfo.style.display === "none") {
+    // clearInterval(intervalo);
+    displayWin.style.display = 'block';
+    limpieza();
+    jugando = false;
+  }
+}
+
+function jugar() {
+  // intervalo =  
+  setInterval(increaseLevel, 15000);
+  // intervalo();
+  jugando = true;
+  console.log("salida de game over y volver a empezar");
+  displayGameOver.style.display = "none";
+  displayWel.style.display = "none";
+  displayInfo.style.display = "none";
+  displayWin.style.display = "none";
+  ambul.style.display = "block";
+  ambuli.style.display = "block";
+  score = 1000;
+  updateScore(score);
+  level = 1;
+  updateLevel;
+}
+
+
+//funciones////////////////////////////////////////////////
+function bajar() {
+  if (currentTop < minimo) {
+    console.log("estas en funcion bajar1");
+    currentTop += 1;
+    ambul.style.top = `${currentTop}%`;
+    score -= 100;
+    updateScore(score);
+  } else {
+    console.log("estas en funcion bajar2");
+    currentTop -= 1;
+    ambul.style.top = `${currentTop}%`;
+  }
+}
+function subir() {
+  if (currentTop > maximo) {
+    console.log("estas en funcion subir1");
+    currentTop -= 1;
+    ambul.style.top = `${currentTop}%`;
+    score -= 100;
+    updateScore(score);
+  } else {
+    console.log("estas en funcion subir2");
+    currentTop += 1;
+    ambul.style.top = `${currentTop}%`;
+  }
+}
+
+//vorrar a todo lo de la clase person
+function limpieza() {
+  // debugger
+  // Selecciona todos los elementos con la clase "person"
+  clasePerson.forEach(function (elementon) {
+    elementon.remove();
+    // debugger
+  });
+  ambul.style.display = "none";
+  ambuli.style.display = "none";
+  // debugger
+}
+
+// Función para actualizar la puntuación en la interfaz
+function updateScore(newScore) {
+  score = newScore;
+  scoreContainer.textContent = `SCORE: ${score}`;
+  // game over
+  if (newScore <= 0) {
+    perdido();
+  }
+}
+// Función para actualizar el nivel en la interfaz
+function updateLevel(newLevel) {
+  level = newLevel;
+  levelContainer.textContent = `LEVEL: ${level}`;
+}
+// Función para aumentar el nivel
+function increaseLevel() {
+  if (level < 4 & jugando) {
+    level++;
+  } else {
+    updateLevel(1);
+    winer();
+  }
+  // Actualizar el nivel y la puntuación en la interfaz
+  updateLevel(level);
+  updateScore(score);
+}
+
+
+
+
+
+
+
+
+//script persona//////////////////////////////////////////////////////////////////////////////////
+// Función para crear una persona, revisar aca opcion de arreglar boolean
+function createPerson() {
+  if (jugando) {
+    console.log('el juego esta activado');
+    const personi = document.createElement('img');//creacion
+    personi.src = imagenes[imagenActualIndex];//direccion
+    personi.idName = ides[imagenActualIndex];//id
+    personi.className = 'person';//clase
+    personi.style.left = '1500px'; // Inicialmente, a la derecha de la pantalla
+    personi.style.height = '30px';
+    personi.style.width = 'auto';
+    //agregar aca ternario, si no hay colision con road remove y volver a crear
+    personi.style.top = `${Math.random() * (26) + 49}%`;//altura de nacimiento
+    road.appendChild(personi);//dependencia
+    movePerson(personi);
+    imagenActualIndex++;
+    if (imagenActualIndex >= imagenes.length) {
+      imagenActualIndex = 0;
+    }
+  }
+}
+
+// Función para mover una persona hacia la izquierda hasta desaparecer
+function movePerson(personi) {
+  if (jugando) {
+    const moveInterval = setInterval(function () {
+      const currentLeft = parseInt(personi.style.left);
+      if (currentLeft < -1) {
+        clearInterval(moveInterval);
+        personi.remove();
+        score += 25;
+        updateScore(score);
+      } else {
+        personi.style.left = `${currentLeft - speed}px`;
+      }
+      if (score > score2 + 1000) {
+        speed += 2;
+        score2 += 500;
+      }
+
+
+
+
+
+
+
+
+
+
+      //funcion efecto general usando this , para choque salida, fuego ,montana
+      // function efecto() {
+      //   setTimeout(this.style.display = "block", 1000);
+      //   this.style.display = "none"
+      // }
+
+
+
+
+
+      // Verificar si la ambulancia choca con una persona
+      if (isCollision(ambulance, personi)) {
+        subir();
+
+        if ("fuegos" === personi.idName) {
+          // efecto.bind(quema); 
+          personi.remove();
+          score -= 100;
+          updateScore(score);
+          console.log('chocaste con fuego');
+        }
+        if ("piedras" === personi.idName) {
+          personi.remove();
+          score -= 50;
+          updateScore(score);
+          console.log('chocaste con piedra');
+        }
+        if ("personas" === personi.idName) {
+          personi.remove();
+          perdido();
+          console.log('chocaste con persona');
+        }
+        if ("puntos" === personi.idName) {
+          personi.remove();
+          score += 200; //ganaste 10 puntos
+          updateScore(score);
+          console.log('chocaste con ganador de puntos');
+        }
+      }
+    }, llamadas);
+  }
+}
+
+// Función para verificar si dos elementos colisionan
+function isCollision(element1, element2) {
+  const rect1 = element1.getBoundingClientRect();
+  const rect2 = element2.getBoundingClientRect();
+  return !(
+    rect1.right < rect2.left ||
+    rect1.left > rect2.right ||
+    rect1.bottom < rect2.top ||
+    rect1.top > rect2.bottom
+  );
+}
+
+
+
+
+
+
+
+
+function animacionPerdiste() {
+  elemento.classList.add("perdiste");
+  // detener la animación
+  setTimeout(function () {
+    elemento.classList.remove("perdiste");
+  }, 100);
+
+
+  elemento.classList.add("milui");
+  // detener la animación
+  setTimeout(function () {
+    elemento.classList.remove("milui");
+  }, 100);
+}
+    </script>
+</body>
+
+</html>

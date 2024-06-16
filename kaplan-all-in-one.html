@@ -7,6 +7,22 @@
     <title>לעבור את קפלן!</title>
     <link rel="icon" href="./images/ambu.ico" type="image/gif">
     <style>
+
+        :root {
+            --fondo: #13d3a3;
+            /* --fondo: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(66, 66, 66) 100%); */
+            --fondo-secundario:#13a0d3;
+            --fondo-tercero-claro:rgb(155, 212, 155);
+            --borde:rgba(0, 89, 255, 0.5);
+            --color-text: #313131;
+            --color-text-claro:rgb(145, 187, 133);
+            --color-text-botones:white;
+            --color-text-botones-obscuro:rgb(68, 68, 68);
+            --fondo-botones:rgba(0, 255, 98, 0.436);
+            --fondo-hover:rgba(0, 255, 98, 0.893);
+            --blanco: #ffffff;
+            --negro: #000000;
+        }
 /* pantallas grandes */
 /* @media (min-width: 768px) { */
 *{
@@ -29,7 +45,9 @@ body {
         text-align: center;
         display: none;
         /* display: block; */
-        background-color: #08360e;
+        /* revisar2 */
+        background-color: var(--fondo);
+        /* background-color: #08360e; */
         background-image: url("./images/TelAvivCity.jpg");
         background-size: cover;
         right: 0;
@@ -38,7 +56,7 @@ body {
         padding: 0;
         width: 100%;
         height: 100%;
-        color: hsl(0, 0%, 100%);
+        color: var(--color-text);
         font-size: 10em;
         font-family: Myfont, Verdana;
         font-weight: 700;
@@ -53,7 +71,7 @@ body {
         }
 
         50% {
-            transform: scale(.8);
+            transform: scale(.9);
         }
 
         100% {
@@ -69,7 +87,7 @@ body {
         align-items: center;
         justify-content: center;
         position: fixed;
-        font-size: 5rem;
+        font-size: 3rem;
         animation: latido 3s linear infinite;
     }
 
@@ -98,13 +116,11 @@ body {
         width: 8%;
         height: 8%;
         font-family: Myfont, Verdana;
-
     }
 
     .buto:hover {
-        background-color: #ffffff;
         cursor: pointer;
-
+        scale: 1.1;
     }
 
     #rules {
@@ -117,10 +133,10 @@ body {
         padding: 1%, 2%;
         /* width: 50%;
         height: 35%; */
-        background-color: #edfedb;
-        border: 3px dashed rgb(156, 156, 156);
+        background-color: var(--blanco);
+        border: 3px dashed var(--borde);
         z-index: 10000;
-        color: #08360e;
+        color: var(--color-text);
         font-size: 1.5rem;
         text-align: center;
     }
@@ -128,10 +144,10 @@ body {
     #close-rules {
         font-family: Myfont, Verdana;
         position: relative;
-        border: 3px solid rgb(161, 161, 161);
+        border: 3px solid var(--borde);
         width: 30%;
         height: 10%;
-        background-color: #d0fef2;
+        background-color:var(--fondo-botones);
         cursor: pointer;
         z-index: 100;
         font-weight: bold;
@@ -139,7 +155,8 @@ body {
     }
 
     #close-rules:hover {
-        background-color: #7bd0b9;
+        background-color: var(--fondo-hover);
+        scale: 1.1;
     }
 
     #open-rules {
@@ -147,22 +164,23 @@ body {
         font-family: Myfont, Verdana;
         width: 10%;
         height: 10%;
-        background-color: #d0fef2;
+        background-color: var(--fondo-botones);
+        border: solid 1px var(--borde);
+        color: var(--color-text-botones);
+        border-radius: 4px;
         position: fixed;
         top: 2%;
         left: 6%;
-        color: #08360e;
         font-weight: bold;
         font-size: 2em;
         padding: 1px;
         text-align: center;
-        border: solid 1px black;
-        border-radius: 4px;
-
     }
 
     #open-rules:hover {
-        background-color: #38e6b7;
+        background-color: var(--fondo-hover);
+        scale: 1.1;
+
     }
 
     /* #open-rules:visited {
@@ -177,7 +195,7 @@ body {
 
     #welcome {
         opacity: calc(1);
-        background-color: #9cc9bb;
+        background-color: var(--fondo-secundario);
         /* background-image: url("./images/tec.gif"); */
         margin: 0;
         top: 0;
@@ -191,7 +209,6 @@ body {
         width: 100vw;
         height: 100vh;
         text-align: center;
-        color: #7e928b;
         font-size: 5em;
         font-family: Myfont, Verdana;
         font-weight: 700;
@@ -200,12 +217,13 @@ body {
     }
 
     /* agregar a tablet */
-    .avara {
+    .aclaracion {
         right: 0;
         position: fixed;
         width: 100%;
         top: 80%;
-        background-color: #ffffff;
+        background-color: var(--fondo-tercero-claro);
+        color: var(--color-text);
         z-index: 20;
 
     }
@@ -215,28 +233,33 @@ body {
         right: 35%;
         position: fixed;
         bottom: 30%;
-        border: 3px solid rgb(161, 161, 161);
+        border: 3px solid var(--borde);
+        color: var(--color-text-botones);
+        border-radius: 30px;
         width: 30%;
         height: 10%;
-        background-color: #d0fef2;
-        cursor: pointer;
+        background-color: var(--fondo-botones);
         z-index: 100;
         font-weight: bold;
     }
 
     #emp:hover {
-        background-color: #7bd0b9;
+        background-color: var(--fondo-hover);
+        scale: 1.1;
+
     }
 
     #volvi {
         font-weight: bold;
+        border-radius: 30px;
         right: 35%;
         position: fixed;
         top: 70%;
-        border: 3px solid rgb(161, 161, 161);
+        background-color: var(--fondo-botones);
+        border: 3px solid var(--borde);
+        color: var(--color-text-botones);
         width: 30%;
         height: 10%;
-        background-color: #c2c0bc;
         cursor: pointer;
         z-index: 100;
         font-family: Myfont, Verdana;
@@ -244,7 +267,9 @@ body {
 
 
     #volvi:hover {
-        background-color: #ffffff;
+        background-color: var(--fondo-hover);
+        scale: 1.1;
+
     }
 
     /* agregar a tablet */
@@ -252,10 +277,10 @@ body {
         font-family: Myfont, Verdana;
         right: 35%;
         position: fixed;
-        border: 3px solid rgb(161, 161, 161);
+        background-color: var(--fondo-secundario);
+        border: 3px solid var(--borde);
         width: 30%;
         height: 10%;
-        background-color: #c2c0bc;
         cursor: pointer;
         z-index: 100;
         font-weight: bold;
@@ -264,7 +289,9 @@ body {
     }
 
     #volviSecond:hover {
-        background-color: #ffffff;
+        background-color: var(--fondo-hover);
+        scale: 1.1;
+
     }
 
 
@@ -275,7 +302,8 @@ body {
         height: 40%;
         width: 60%;
         top: 30%;
-        background-color: #ffffff;
+        background-color: var(--fondo);
+        color: var(--color-text);
 
     }
 
@@ -287,18 +315,16 @@ body {
         height: 40%;
         width: 100%;
         top: 30%;
-
     }
 
     #mail2 {
         display: none;
-
     }
 
     /* agregar a tablet */
     #winText {
         text-align: center;
-        color: white;
+        color: var(--blanco);
         font-size: 8rem;
         font-weight: 700;
         animation: latido 3s linear infinite;
@@ -313,7 +339,8 @@ body {
         text-align: center;
         display: none;
         /* display: block; */
-        background-color: #08360e;
+        background-color: var(--fondo);
+        color: var(--color-text);
         background-image: url("./images/TelAvivCity.jpg");
         background-size: cover;
         right: 0;
@@ -322,7 +349,6 @@ body {
         padding: 0;
         width: 100%;
         height: 100%;
-        color: hsl(0, 0%, 100%);
         font-size: 10em;
         font-family: Myfont, Verdana;
         font-weight: 700;
@@ -335,16 +361,18 @@ body {
         right: 35%;
         position: fixed;
         top: 50%;
-        border: 3px solid rgb(161, 161, 161);
+        border: 3px solid var(--borde);
         width: 30%;
         height: 10%;
-        background-color: #13d3a3;
+        background-color: var(--fondo-botones);
         cursor: pointer;
         z-index: 100;
     }
 
     .start-over:hover {
-        background-color: #c5ece2;
+        background-color: var(--fondo-hover);
+        scale: 1.1;
+
     }
 
     #road {
@@ -364,7 +392,7 @@ body {
         font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
         height: 100vh;
         width: 100%;
-        background-color: #9cc9bb;
+        background-color: var(--fondo);
         font-size: 10px;
         /* border: solid 10px rgb(255, 196, 0); */
     }
@@ -389,8 +417,8 @@ body {
         position: relative;
         border-radius: 3px;
         overflow: hidden;
-        background-color: #08360e;
-        border: solid 10px rgb(175, 175, 175);
+        background-color: var(--fondo);
+        border: solid 10px var(--borde);
     }
 
     .background {
@@ -434,8 +462,8 @@ body {
         margin: 0;
         width: 100%;
         height: 10%;
-        background-color: #13d3a3;
-        color: rgb(255, 255, 255);
+        background-color:var(--fondo-secundario);
+        color: var(--color-text);
         padding: 10px;
         left: 0px;
         display: inline-flex;
@@ -454,8 +482,8 @@ body {
         margin: 0;
         width: 99%;
         height: 10%;
-        background-color: #13d3a3;
-        color: rgb(255, 255, 255);
+        background-color: var(--fondo-secundario);
+        color: var(--blanco);
         padding: 10px;
         left: 0px;
         justify-content: center;
@@ -481,14 +509,16 @@ body {
         height: 50px;
         width: 50px;
         font-size: 1rem;
-        background-color: #edfedb;
+        background-color: var(--fondo-botones);
+        
         padding: 5px;
-        border: solid 5px #256638;
+        border: solid 5px var(--borde);
         border-radius: 50px;
         position: relative;
         top: 0px;
         left: 5px;
-        color: rgb(18, 124, 2);
+        color: var(--color-text-botones);
+    
     }
     
 
@@ -498,14 +528,17 @@ body {
     #move-down:hover,
     #calc:hover,
     #ipus:hover {
-        background-color: #e8bc79;
-        border: solid 5px #256638;
-        color: rgb(18, 124, 2);
+        background-color: var(--fondo-hover);
+        border: solid 5px var(--borde);
+        color: var(--color-text);
         cursor: pointer;
+        scale: 1.1;
+
     }
 
     span {
         color: black;
+    
     }
 
     #klal2 {
@@ -514,9 +547,9 @@ body {
         /* font-weight: 700; */
         flex-wrap: wrap;
         font-size: 1rem;
-        color: #08360e;
+        color: black;
         z-index: 300;
-        background-color: #ffffff;
+        background-color: var(--fondo);
     }
     h1{
         font-size: 5rem;
@@ -542,12 +575,11 @@ body {
         position: relative;
         font-size: 1.5rem;
         font-weight: bold;
-        color: rgb(18, 124, 2);
-        background-color: white;
+        color: var(--color-text);
+        background-color:white;
+        border: solid 5px var(--borde);
         padding: 10px 15px;
-        border: solid 5px #256638;
         border-radius: 50px;
-        background-color: #edfedb;
         align-items: baseline;
         align-self: center;
     }
@@ -654,11 +686,10 @@ body {
         top: 30%;
         /* width: 50%;
         height: auto; */
-        background-color: #edfedb;
-        border: 3px dashed rgb(156, 156, 156);
+        border: 3px dashed var(--borde);
         z-index: 10000;
         font-size: 1rem;
-        color: #08360e;
+    
     }
 
     #close-rules {
@@ -666,40 +697,39 @@ body {
         font-family: Myfont, Verdana;
         right: 35%;
         position: relative;
-        border: 1px solid rgb(156, 156, 156);
+        border: 1px solid var(--borde);
         width: 30%;
         height: 10%;
-        background-color: #d0fef2;
         cursor: pointer;
         z-index: 100;
         font-weight: bold;
     }
 
-    #close-rules:hover {
-        background-color: #7bd0b9;
-    }
+    /* #close-rules:hover {
+        background-color: var(--fondo-hover);
+    } */
 
     #open-rules {
         cursor: pointer;
         font-family: Myfont, Verdana;
         width: 5%;
         height: 5%;
-        background-color: #d0fef2;
+        /* background-color: var(--fondo-secundario); */
         position: fixed;
         top: 5%;
         left: 3%;
-        color: #08360e;
+        /* color: var(--color-text); */
         font-weight: bold;
         font-size: 0px;
         padding: 1px;
         text-align: center;
-        border: solid 1px black;
+        /* border: solid 1px black; */
         border-radius: 50px;
 
     }
 
     #open-rules:hover {
-        background-color: #38e6b7;
+        /* background-color: var(--fondo-hover); */
     }
 
 
@@ -737,21 +767,23 @@ body {
 
     #emp {
         font-family: Myfont, Verdana;
+        border-radius: 30px;
         right: 34%;
         left: 34%;
         position: fixed;
         bottom: 30%;
-        border: 3px solid rgb(161, 161, 161);
         width: 30%;
         height: 10%;
-        background-color: #d0fef2;
+        /* border: 3px solid var(--borde); */
+        /* background-color:var(--fondo-botones); */
+        /* color: var(--color-text-botones); */
         cursor: pointer;
         z-index: 100;
         font-weight: bold;
     }
 
     #emp:hover {
-        background-color: #7bd0b9;
+        /* background-color:var(--fondo-hover); */
     }
 
     #volvi {
@@ -759,17 +791,18 @@ body {
         right: 35%;
         position: fixed;
         bottom: 20%;
-        border: 3px solid rgb(161, 161, 161);
+        /* background-color: #ffffff; */
+        /* border: 3px solid var(--borde); */
+        /* color: var(--color-text-botones-obscuro); */
         width: 30%;
         height: 10%;
-        background-color: #c2c0bc;
         cursor: pointer;
         z-index: 100;
         font-weight: bold;
     }
 
     #volvi:hover {
-        background-color: #ffffff;
+        /* background-color: var(--fondo-hover); */
     }
 
     #volviSecond {
@@ -777,17 +810,17 @@ body {
         right: 35%;
         position: fixed;
         bottom: 20%;
-        border: 3px solid rgb(161, 161, 161);
+        /* border: 3px solid rgb(161, 161, 161); */
         width: 30%;
         height: 10%;
-        background-color: #c2c0bc;
+        /* background-color: #c2c0bc; */
         cursor: pointer;
         z-index: 100;
         font-weight: bold;
     }
 
     #volviSecond:hover {
-        background-color: #ffffff;
+        /* background-color: #ffffff; */
     }
 
 
@@ -800,12 +833,13 @@ body {
     }
 
     .buto:hover {
-        background-color: #ffffff;
         cursor: pointer;
+        scale: 1.1;
+
     }
 
     #game-over {
-        background-color: #08360e;
+        background-color:var(--fondo);
         background-image: url("./images/TelAvivCity.jpg");
         background-size: cover;
         right: 0;
@@ -817,7 +851,7 @@ body {
         width: 100%;
         height: 100%;
         text-align: center;
-        color: #ffffff;
+        color:var(--blanco);
         font-size: 10em;
         font-family: Myfont, Verdana;
         font-weight: 700;
@@ -827,8 +861,8 @@ body {
 
     #welcome {
         opacity: calc(1);
-        background-color: #9cc9bb;
-        /* background-image: url("./images/tec.gif"); */
+        background-color: var(--blanco);
+        background-image: url("./images/fondo-entrada.jpg");
         margin: 0;
         top: 0;
         right: 0;
@@ -841,7 +875,7 @@ body {
         width: 100vw;
         height: 100vh;
         text-align: center;
-        color: #7e928b;
+        /* color:var(--color-text); */
         font-size: 5em;
         font-family: Myfont, Verdana;
         font-weight: 700;
@@ -849,12 +883,12 @@ body {
         position: fixed;
     }
 
-    #avara {
+    #aclaracion {
         right: 0;
         position: fixed;
         width: 100%;
         top: 80%;
-        background-color: #ffffff;
+        background-color: var(--blanco);
         border-radius: 10px solid rgb(46, 149, 174);
 
     }
@@ -866,14 +900,14 @@ body {
         height: 40%;
         width: 60%;
         top: 30%;
-        background-color: #ffffff;
+        /* background-color:var(--blanco); */
 
     }
 
 
     #win {
         opacity: calc(1);
-        background-color: #08360e;
+        /* background-color:var(--blanco); */
         background-image: url("./images/TelAvivCity.jpg");
         margin: 0;
         padding: 0;
@@ -882,7 +916,7 @@ body {
         width: 100%;
         height: 100%;
         text-align: center;
-        color: #ffffff;
+        /* color:var(--color-text-claro); */
         font-size: 10em;
         font-family: Myfont, Verdana;
         font-weight: 700;
@@ -892,7 +926,9 @@ body {
 
 
     .start-over:hover {
-        background-color: #c5ece2;
+        background-color: var(--fondo-hover);
+        scale: 1.1;
+
     }
 
     #road {
@@ -912,7 +948,7 @@ body {
         font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
         height: 100vh;
         width: 100%;
-        background-color: #9cc9bb;
+        /* background-color: var(--fondo); */
         font-size: 10px;
         /* border: solid 10px rgb(255, 196, 0); */
     }
@@ -937,8 +973,8 @@ body {
         position: relative;
         border-radius: 3px;
         overflow: hidden;
-        background-color: #08360e;
-        border: solid 10px rgb(175, 175, 175);
+        /* background-color: var(--fondo); */
+        /* border: solid 10px var(--borde); */
     }
 
     .background {
@@ -981,12 +1017,12 @@ body {
         margin: 0;
         width: 100%;
         height: 10%;
-        background-color: #13d3a3;
-        color: rgb(255, 255, 255);
+        /* background-color:var(--fondo); */
+        /* color: var(--color-text-claro); */
         padding: 10px;
         left: 0px;
         display: inline-flex;
-        flex-wrap: wrap;
+        flex-wrap:nowrap;
         align-content: flex-end;
         justify-content: space-between;
         align-items: center;
@@ -1001,14 +1037,14 @@ body {
         margin: 0;
         width: 99%;
         height: 10%;
-        background-color: #13d3a3;
-        color: rgb(255, 255, 255);
+        /* background-color: #13d3a3; */
+        /* color: rgb(255, 255, 255); */
         padding: 10px;
         left: 0px;
         justify-content: center;
         display: inline-flex;
         position: fixed;
-        flex-wrap: wrap;
+        flex-wrap:nowrap;
         align-content: space-around;
         align-items: center;
         z-index: 15;
@@ -1027,14 +1063,14 @@ body {
         height: 50px;
         width: 50px;
         font-size: 1rem;
-        background-color: #edfedb;
+        /* background-color: #edfedb; */
         padding: 5px;
-        border: solid 5px #256638;
+        /* border: solid 5px #256638; */
         border-radius: 50px;
         position: relative;
         top: 0px;
         left: 5px;
-        color: rgb(18, 124, 2);
+        /* color: rgb(18, 124, 2); */
     }
 
     #nuevos:hover,
@@ -1043,9 +1079,9 @@ body {
     #move-down:hover,
     #calc:hover,
     #ipus:hover {
-        background-color: #e8bc79;
+        /* background-color: #e8bc79;
         border: solid 5px #256638;
-        color: rgb(18, 124, 2);
+        color: rgb(18, 124, 2); */
         cursor: pointer;
     }
 
@@ -1058,7 +1094,6 @@ h1{
 }
 
     #title {
-
         position: fixed;
         display: block;
         font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
@@ -1069,7 +1104,6 @@ h1{
 /* revisar */
     #score-container,
     #level {
-        /* margin: 5%; */
         margin: 0px 20px;
         font-family: Myfont, Verdana, Geneva, Tahoma, sans-serif;
         display: inline-flex;
@@ -1077,12 +1111,11 @@ h1{
         position: relative;
         font-size: 1.5rem;
         font-weight: bold;
-        color: rgb(18, 124, 2);
-        background-color: white;
+        /* color:var(--color-text);
+        background-color: white; */
+        /* border: solid 5px var(--borde); */
         padding: 10px 15px;
-        border: solid 5px #256638;
         border-radius: 50px;
-        background-color: #edfedb;
         align-items: baseline;
         align-self: center;
     }
@@ -1149,11 +1182,17 @@ h1{
     }
 
     #perdiste {
+  font-size: 5rem;
+    }
+    /* el "perdiste" para pantallas grandes */
+    /* #perdiste {
+        animation: latido 5s linear infinite;
+        font-size: 10rem;
         right: 0;
         position: fixed;
         width: 100%;
         top: 40%;
-    }
+    } */
 
     .person {
         /* display: none; */
@@ -1165,8 +1204,31 @@ h1{
         border-radius: 50%;
         z-index: 5;
     }
+/* revisar */
+@keyframes latido {
+        0% {
+            transform: scale(1);
+        }
 
+        50% {
+            transform: scale(.9);
+        }
 
+        100% {
+            transform: scale(1);
+        }
+    }
+    /* revisar */
+    #milui {
+        right: 38%;
+        left: 38%;
+        top: 10%;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        font-size: 2rem;
+        animation: latido 3s linear infinite;
+    }
 
 
 
@@ -1225,7 +1287,7 @@ h1{
                 <div id="title2">לעבור את קפלן
                 </div>
                 <button type="button" class="start-over" id="emp"> התחל משחק</button>
-                <div class="avara">הבהרה: משחק זה אינו מעודד אלימות או נהיגה לא זהירה!!
+                <div class="aclaracion">הבהרה: משחק זה אינו מעודד אלימות או נהיגה לא זהירה!!
                     <div id="klal2">
                         <div id="mail2">
               
@@ -1254,7 +1316,7 @@ h1{
             <div id="win">
 
                 <div id="winText">עברת את קפלן בהצלחה!</div>
-                <div class="avara">
+                <div class="aclaracion">
                     <button type="button" class="start-over" id="volviSecond">התחל שוב</button>
                 </div>
             </div>
